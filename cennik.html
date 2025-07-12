@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cenník služieb - CarBox</title>
+    <meta name="description" content="Prehľadný cenník našich autoservisných, pneuservisných a ďalších služieb. Zistite orientačné ceny opráv a údržby.">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        html { scroll-behavior: smooth; }
+        .highlight-on-hover { transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; }
+        .highlight-on-hover:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
+        .mobile-menu { display: none; position: fixed; top: 80px; left: 0; right: 0; background-color: white; padding: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 900; transform: translateY(-100%); transition: transform 0.3s ease-in-out; border-bottom: 1px solid #e5e7eb; }
+        .mobile-menu.menu-open { display: block; transform: translateY(0); }
+        .mobile-menu-item { display: block; padding: 0.75rem 0.5rem; font-size: 1.1rem; color: #374151; border-bottom: 1px solid #e5e7eb; }
+        .mobile-menu-item:hover { background-color: #f3f4f6; }
+        .modal-overlay { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); justify-content: center; align-items: center; }
+        .modal-content { position: relative; background-color: #ffffff; padding: 2rem; border-radius: 0.5rem; width: 90%; max-width: 500px; z-index: 1001; animation: slideIn 0.3s ease-out; }
+        .modal-close-button { position: absolute; top: 10px; right: 15px; font-size: 2rem; line-height: 1; color: #9ca3af; cursor: pointer; transition: color 0.2s; }
+        .modal-close-button:hover { color: #1f2937; }
+        .modal-visible { display: flex; }
+        @keyframes slideIn { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .price-table tr:not(:last-child) { border-bottom: 1px solid #e5e7eb; }
+        .price-table td, .price-table th { padding: 1rem 0.5rem; }
+    </style>
+    
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/6871267e3cd275190ba1724f/1ivsvsnl2';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+</head>
+<body class="bg-white">
+   <nav class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-20">
+            <a href="index.html"><img src="carbox_logo_t.png" alt="CarBox Logo" class="h-16 w-auto"/></a>
+            <div class="hidden md:flex items-center space-x-8">
+                <div class="relative group">
+                    <button class="text-gray-700 hover:text-red-600 transition-colors py-2">Služby</button>
+                    <div class="absolute left-0 mt-0 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                        <div class="py-1">
+                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="autoservis.html">Autoservis</a>
+                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="pneuservis.html">Pneuservis</a>
+                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="geometria.html">Geometria</a>
+                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="lakovna.html">Lakovňa</a>
+                        </div>
+                    </div>
+                </div>
+                <a class="text-gray-700 hover:text-red-600 transition-colors py-2" href="blog.html">Blog</a>
+                <a class="text-gray-700 hover:text-red-600 transition-colors py-2" href="cennik.html">Cenník</a>
+                <a class="text-gray-700 hover:text-red-600 transition-colors py-2" href="index.html#contact">Kontakt</a>
+                <button id="open-booking-modal-desktop" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium h-10 px-6 py-2 bg-red-600 hover:bg-red-700 text-white">Objednať sa</button>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden p-2 text-gray-700 hover:text-red-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+            </button>
+        </div>
+    </div>
+</nav>
+<div id="mobile-menu" class="mobile-menu">
+    <a href="autoservis.html" class="mobile-menu-item">Autoservis</a>
+    <a href="pneuservis.html" class="mobile-menu-item">Pneuservis</a>
+    <a href="geometria.html" class="mobile-menu-item">Geometria</a>
+    <a href="lakovna.html" class="mobile-menu-item">Lakovňa</a>
+    <a href="blog.html" class="mobile-menu-item">Blog</a>
+    <a href="cennik.html" class="mobile-menu-item">Cenník</a>
+    <a href="index.html#contact" class="mobile-menu-item">Kontakt</a>
+    <button id="open-booking-modal-mobile" class="w-full mt-4 text-white bg-red-600 hover:bg-red-700 py-3 rounded-lg font-semibold">Objednať sa</button>
+</div>
+
+    <main>
+        <section class="relative h-96 bg-gray-800">
+            <img src="geometria2.webp" alt="Kalkulácia ceny opravy" class="w-full h-full object-cover opacity-30"/>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center text-white px-4">
+                    <h1 class="text-5xl md:text-7xl font-bold">Cenník služieb</h1>
+                    <p class="text-xl md:text-2xl mt-4">Férové ceny za profesionálnu prácu</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="grid lg:grid-cols-3 gap-12">
+                    
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h2 class="text-3xl font-bold mb-6 text-center text-red-600">Autoservis</h2>
+                        <table class="w-full text-left price-table">
+                            <tbody>
+                                <tr><td>Hodinová sadzba - mechanické práce</td><td class="font-bold text-right">od 35 €</td></tr>
+                                <tr><td>Počítačová diagnostika</td><td class="font-bold text-right">30 €</td></tr>
+                                <tr><td>Výmena oleja a filtra (práca)</td><td class="font-bold text-right">od 25 €</td></tr>
+                                <tr><td>Výmena brzdových platničiek (1 náprava)</td><td class="font-bold text-right">od 30 €</td></tr>
+                                <tr><td>Výmena brzdových kotúčov a platničiek</td><td class="font-bold text-right">od 70 €</td></tr>
+                                <tr><td>Servis a plnenie klimatizácie (R134a)</td><td class="font-bold text-right">od 60 €</td></tr>
+                                <tr><td>Dezinfekcia klimatizácie ozónom</td><td class="font-bold text-right">20 €</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h2 class="text-3xl font-bold mb-6 text-center text-red-600">Pneuservis</h2>
+                        <table class="w-full text-left price-table">
+                            <tbody>
+                                <tr><td>Kompletné prezutie plech. diskov</td><td class="font-bold text-right">od 40 €</td></tr>
+                                <tr><td>Kompletné prezutie ALU diskov do 17"</td><td class="font-bold text-right">od 50 €</td></tr>
+                                <tr><td>Kompletné prezutie ALU diskov 18" a viac</td><td class="font-bold text-right">od 60 €</td></tr>
+                                <tr><td>Oprava defektu (knôtom)</td><td class="font-bold text-right">od 15 €</td></tr>
+                                <tr><td>Oprava defektu (hríbikom)</td><td class="font-bold text-right">od 25 €</td></tr>
+                                <tr><td>Sezónne uskladnenie pneumatík</td><td class="font-bold text-right">40 € / sezóna</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h2 class="text-3xl font-bold mb-6 text-center text-red-600">Geometria a iné</h2>
+                        <table class="w-full text-left price-table">
+                            <tbody>
+                                <tr><td>3D Geometria podvozku - meranie</td><td class="font-bold text-right">30 €</td></tr>
+                                <tr><td>3D Geometria - nastavenie 1 nápravy</td><td class="font-bold text-right">od 45 €</td></tr>
+                                <tr><td>3D Geometria - nastavenie oboch náprav</td><td class="font-bold text-right">od 60 €</td></tr>
+                                <tr><td>Príprava vozidla na STK/EK</td><td class="font-bold text-right">50 €</td></tr>
+                                <tr><td>Lakovanie a klampiarske práce</td><td class="font-bold text-right">Individuálne</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div class="mt-16 text-center text-gray-600 bg-yellow-100 border-l-4 border-yellow-500 p-6 rounded-r-lg">
+                    <p class="font-semibold">Dôležité upozornenie:</p>
+                    <p>Všetky uvedené ceny sú orientačné a sú uvedené s DPH. Finálna cena sa môže líšiť v závislosti od konkrétneho typu vozidla, rozsahu poškodenia a cien náhradných dielov. Pre presnú cenovú ponuku nás neváhajte kontaktovať.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="bg-red-600 text-white">
+            <div class="container mx-auto px-4 py-16 text-center">
+                <h2 class="text-3xl font-bold mb-4">Získajte presnú cenovú ponuku</h2>
+                <p class="text-lg mb-8 max-w-2xl mx-auto">Každé auto je jedinečné. Objednajte sa na obhliadku a my vám pripravíme kalkuláciu presne na mieru pre vaše vozidlo.</p>
+                <button id="open-booking-modal-cta" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-semibold h-14 px-10 py-2 bg-white text-red-600 hover:bg-gray-100">Dohodnúť si termín</button>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="bg-gray-800 text-white py-16">
+        <div class="container mx-auto px-4 mt-16">
+            <h3 class="text-3xl font-bold text-white text-center mb-10">Kde nás nájdete?</h3>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="rounded-lg overflow-hidden shadow-xl h-full">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10551.673331960346!2d21.31056610481908!3d48.61140649089752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473f21497fe1f561%3A0x6745304d19e319c!2zxb1lbGV6bmnEjW7DoSAxNzMvMiwgMDQ0IDE0IMSMYcWIYQ!5e0!3m2!1sen!2ssk!4v1752252516056!5m2!1sen!2ssk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="text-left">
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-red-600 mt-1"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-2xl font-bold text-white">CarBox Autoservis</h4>
+                            <p class="text-lg text-gray-300">Železničná 173/2, 044 14 Čaňa</p>
+                            <a href="https://maps.app.goo.gl/V2ZcjfVsp7REto9MA" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 text-red-500 hover:text-red-400 transition-colors">Spustiť navigáciu &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-8 border-t border-gray-700">
+                        <p class="text-lg text-gray-300">Tešíme sa na každú vašu návštevu! Zastavte sa u nás – či už na rýchlu konzultáciu alebo plánovaný servis. Kým sa my perfektne postaráme o vaše auto, vy si môžete v pokoji vychutnať kávu, ktorú u nás máte zadarmo. Vaša spokojnosť a bezpečnosť sú našou prioritou.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-600 mt-16 pt-8 text-center text-gray-400"><p>© 2024 CarBox. Všetky práva vyhradené.</p></div>
+    </footer>
+    
+    <div id="booking-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close-button">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-center text-gray-800">Objednajte sa na servis</h2>
+            <p class="text-center text-gray-600 mb-6">Vyplňte formulár a my sa vám čo najskôr ozveme.</p>
+         <form action="https://formspree.io/f/mqalzkbl" method="POST" class="space-y-4">
+    <div>
+        <label class="block text-sm font-medium text-gray-700">Váš email:</label>
+        <input type="email" name="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500">
+    </div>
+
+    <div>
+        <label class="block text-sm font-medium text-gray-700">Telefón:</label>
+        <input type="tel" name="telefon" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500" placeholder="+421 9xx xxx xxx">
+    </div>
+
+    <div>
+        <label class="block text-sm font-medium text-gray-700">Vaša správa (ŠPZ, typ vozidla, požadovaná služba):</label>
+        <textarea name="message" required rows="4" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500"></textarea>
+    </div>
+    <div>
+        <button type="submit" class="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700">Odoslať objednávku</button>
+    </div>
+</form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js" defer></script>
+</body>
+</html>

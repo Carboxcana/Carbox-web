@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Tipy a rady od CarBox</title>
+    <meta name="description" content="Náš blog je plný praktických tipov, rád a noviniek zo sveta automobilov, ktoré vám pomôžu starať sa o vaše vozidlo.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        html { scroll-behavior: smooth; }
+        .highlight-on-hover { transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; }
+        .highlight-on-hover:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
+        .mobile-menu { display: none; position: fixed; top: 80px; left: 0; right: 0; background-color: white; padding: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 900; transform: translateY(-100%); transition: transform 0.3s ease-in-out; border-bottom: 1px solid #e5e7eb; }
+        .mobile-menu.menu-open { display: block; transform: translateY(0); }
+        .mobile-menu-item { display: block; padding: 0.75rem 0.5rem; font-size: 1.1rem; color: #374151; border-bottom: 1px solid #e5e7eb; }
+        .mobile-menu-item:hover { background-color: #f3f4f6; }
+        .modal-overlay { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); justify-content: center; align-items: center; }
+        .modal-content { position: relative; background-color: #ffffff; padding: 2rem; border-radius: 0.5rem; width: 90%; max-width: 500px; z-index: 1001; animation: slideIn 0.3s ease-out; }
+        .modal-close-button { position: absolute; top: 10px; right: 15px; font-size: 2rem; line-height: 1; color: #9ca3af; cursor: pointer; transition: color 0.2s; }
+        .modal-close-button:hover { color: #1f2937; }
+        .modal-visible { display: flex; }
+        @keyframes slideIn { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    </style>
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/6871267e3cd275190ba1724f/1ivsvsnl2';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+</head>
+<body class="bg-white">
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-20">
+            <a href="index.html"><img src="carbox_logo_t.png" alt="CarBox Logo" class="h-16 w-auto"/></a>
+            <div class="hidden md:flex items-center space-x-8">
+                <div class="relative group">
+                    <button class="text-gray-700 hover:text-red-600 transition-colors py-2">Služby</button>
+                    <div class="absolute left-0 mt-0 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                        <div class="py-1">
+                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="autoservis.html">Autoservis</a>
+                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="pneuservis.html">Pneuservis</a>
+                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="geometria.html">Geometria</a>
+                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="lakovna.html">Lakovňa</a>
+                        </div>
+                    </div>
+                </div>
+                <a class="text-gray-700 hover:text-red-600 transition-colors py-2" href="blog.html">Blog</a>
+                <a class="text-gray-700 hover:text-red-600 transition-colors py-2" href="cennik.html">Cenník</a>
+                <a class="text-gray-700 hover:text-red-600 transition-colors py-2" href="index.html#contact">Kontakt</a>
+                <button id="open-booking-modal-desktop" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium h-10 px-6 py-2 bg-red-600 hover:bg-red-700 text-white">Objednať sa</button>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden p-2 text-gray-700 hover:text-red-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+            </button>
+        </div>
+    </div>
+</nav>
+<div id="mobile-menu" class="mobile-menu">
+    <a href="autoservis.html" class="mobile-menu-item">Autoservis</a>
+    <a href="pneuservis.html" class="mobile-menu-item">Pneuservis</a>
+    <a href="geometria.html" class="mobile-menu-item">Geometria</a>
+    <a href="lakovna.html" class="mobile-menu-item">Lakovňa</a>
+    <a href="blog.html" class="mobile-menu-item">Blog</a>
+    <a href="cennik.html" class="mobile-menu-item">Cenník</a>
+    <a href="index.html#contact" class="mobile-menu-item">Kontakt</a>
+    <button id="open-booking-modal-mobile" class="w-full mt-4 text-white bg-red-600 hover:bg-red-700 py-3 rounded-lg font-semibold">Objednať sa</button>
+</div>
+
+    <main>
+        <section class="relative h-96 bg-gray-800">
+            <img src="automechanik.jpeg" alt="Cesta z pohľadu vodiča" class="w-full h-full object-cover opacity-30"/>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center text-white px-4">
+                    <h1 class="text-5xl md:text-7xl font-bold">CarBox Blog</h1>
+                    <p class="text-xl md:text-2xl mt-4">Tipy a triky zo sveta áut priamo od našich mechanikov</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="grid md:grid-cols-2 lg:grid-cols-1 gap-12 max-w-4xl mx-auto">
+                    <a href="clanok1.html" class="group grid md:grid-cols-3 gap-8 items-center bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                        <div class="md:col-span-1 h-48 md:h-full"><img src="carinwinter1.webp" alt="Auto v zime" class="w-full h-full object-cover"></div>
+                        <div class="md:col-span-2 p-6"><p class="text-sm text-gray-500">11. júl 2025</p><h2 class="text-2xl font-bold text-gray-800 mt-2 group-hover:text-red-600 transition-colors">Ako pripraviť auto na zimu: Kompletný sprievodca</h2><p class="text-gray-600 mt-3">Zima preverí každé vozidlo. Pripravili sme pre vás zoznam kľúčových krokov, na ktoré by ste pred prvým mrazom určite nemali zabudnúť.</p><span class="inline-block mt-4 font-semibold text-red-600">Čítať viac &rarr;</span></div>
+                    </a>
+                    <a href="clanok2.html" class="group grid md:grid-cols-3 gap-8 items-center bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                        <div class="md:col-span-1 h-48 md:h-full"><img src="https://images.pexels.com/photos/4489765/pexels-photo-4489765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Mechanik pozerá do motora" class="w-full h-full object-cover"></div>
+                        <div class="md:col-span-2 p-6"><p class="text-sm text-gray-500">10. júl 2025</p><h2 class="text-2xl font-bold text-gray-800 mt-2 group-hover:text-red-600 transition-colors">5 mýtov o údržbe auta, ktorým by ste mali prestať veriť</h2><p class="text-gray-600 mt-3">"Motor treba zohrievať na mieste," "Drahší benzín zvýši výkon." Spoznávate tieto tvrdenia? Pozreli sme sa na najčastejšie mýty.</p><span class="inline-block mt-4 font-semibold text-red-600">Čítať viac &rarr;</span></div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="bg-gray-800 text-white py-16">
+        <div class="container mx-auto px-4"><div class="text-center mb-10"><h2 class="text-4xl font-bold text-white">Kontaktujte nás</h2></div><div class="grid md:grid-cols-2 gap-12"><div class="rounded-lg p-6 bg-gray-700"><form action="https://formspree.io/f/mqalzkbl" method="POST" class="space-y-4"><div><label class="block text-sm font-medium text-gray-300 mb-2">Meno <span class="text-red-500">*</span></label><input type="text" name="name" class="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 bg-gray-800 text-white" required></div><div><label class="block text-sm font-medium text-gray-300 mb-2">Email <span class="text-red-500">*</span></label><input type="email" name="email" class="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 bg-gray-800 text-white" required></div><div><label class="block text-sm font-medium text-gray-300 mb-2">Správa <span class="text-red-500">*</span></label><textarea name="message" rows="4" class="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 bg-gray-800 text-white" required></textarea></div><button type="submit" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium h-10 px-4 py-2 w-full bg-red-600 hover:bg-red-700 text-white">Odoslať správu</button></form></div><div class="space-y-8"><div class="p-6 bg-gray-700 rounded-lg"><div class="space-y-4"><div class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-red-600"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg><div><p class="font-semibold text-white">Adresa</p><p class="text-gray-300">Železničná 173/2, 044 14 Čaňa</p></div></div><div class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-red-600"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><div><p class="font-semibold text-white">Telefón</p><p class="text-gray-300">+421 905 351 100</p></div></div><div class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-red-600"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg><div><p class="font-semibold text-white">Email</p><p class="text-gray-300">info@carbox.sk</p></div></div></div></div></div></div>
+            <div class="container mx-auto px-4 mt-16">
+                <h3 class="text-3xl font-bold text-white text-center mb-10">Kde nás nájdete?</h3>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="rounded-lg overflow-hidden shadow-xl h-full" id="map-container">
+                        </div>
+                    <div class="text-left">
+                        <div class="flex items-start gap-4"><div class="flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-red-600 mt-1"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg></div><div><h4 class="text-2xl font-bold text-white">CarBox Autoservis</h4><p class="text-lg text-gray-300">Železničná 173/2, 044 14 Čaňa</p><a id="navigation-link" href="#" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 text-red-500 hover:text-red-400 transition-colors">Spustiť navigáciu &rarr;</a></div></div>
+                        <div class="mt-8 pt-8 border-t border-gray-700"><p class="text-lg text-gray-300">Tešíme sa na každú vašu návštevu! Zastavte sa u nás. Kým sa my perfektne postaráme o vaše auto, vy si môžete v pokoji vychutnať kávu, ktorú u nás máte zadarmo.</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-600 mt-16 pt-8 text-center text-gray-400"><p>© 2024 CarBox. Všetky práva vyhradené.</p></div>
+        </div>
+    </footer>
+    <div id="booking-modal" class="modal-overlay">
+        <div class="modal-content"><span class="modal-close-button">×</span><h2 class="text-2xl font-bold mb-4 text-center text-gray-800">Objednajte sa na servis</h2><p class="text-center text-gray-600 mb-6">Vyplňte formulár a my sa vám čo najskôr ozveme.</p><form action="https://formspree.io/f/mqalzkbl" method="POST" class="space-y-4">
+    <div>
+        <label class="block text-sm font-medium text-gray-700">Váš email:</label>
+        <input type="email" name="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500">
+    </div>
+
+    <div>
+        <label class="block text-sm font-medium text-gray-700">Telefón:</label>
+        <input type="tel" name="telefon" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500" placeholder="+421 9xx xxx xxx">
+    </div>
+
+    <div>
+        <label class="block text-sm font-medium text-gray-700">Vaša správa (ŠPZ, typ vozidla, požadovaná služba):</label>
+        <textarea name="message" required rows="4" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500"></textarea>
+    </div>
+    <div>
+        <button type="submit" class="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700">Odoslať objednávku</button>
+    </div>
+</form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js" defer></script>
+</body>
+</html>

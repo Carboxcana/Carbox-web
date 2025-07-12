@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lakovňa a klampiarske práce - CarBox</title>
+    <meta name="description" content="Profesionálne lakovanie, klampiarske práce a opravy karosérií. Vrátime vášmu autu vzhľad nového vozidla.">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        html { scroll-behavior: smooth; }
+        .highlight-on-hover { transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; }
+        .highlight-on-hover:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
+        .mobile-menu { display: none; position: fixed; top: 80px; left: 0; right: 0; background-color: white; padding: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 40; transform: translateY(-100%); transition: transform 0.3s ease-in-out; border-bottom: 1px solid #e5e7eb; }
+        .mobile-menu.menu-open { display: block; transform: translateY(0); }
+        .mobile-menu-item { display: block; padding: 0.75rem 0.5rem; font-size: 1.1rem; color: #374151; border-bottom: 1px solid #e5e7eb; }
+        .mobile-menu-item:hover { background-color: #f3f4f6; }
+        .modal-overlay { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); justify-content: center; align-items: center; }
+        .modal-content { background-color: #fefefe; margin: auto; padding: 2rem; border-radius: 10px; width: 90%; max-width: 500px; position: relative; animation: fadeIn 0.4s; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .modal-close-button { color: #aaa; position: absolute; top: 10px; right: 20px; font-size: 28px; font-weight: bold; cursor: pointer; }
+        .modal-close-button:hover { color: black; }
+        @keyframes fadeIn { from {opacity: 0; transform: translateY(-20px);} to {opacity: 1; transform: translateY(0);} }
+        .modal-visible { display: flex; }
+    </style>
+    
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/6871267e3cd275190ba1724f/1ivsvsnl2';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+</head>
+<body class="bg-white">
+<nav class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-20">
+            <a href="index.html"><img src="carbox_logo_t.png" alt="CarBox Logo" class="h-16 w-auto"/></a>
+            <div class="hidden md:flex items-center space-x-8">
+                <div class="relative group">
+                    <button class="text-gray-700 hover:text-red-600 transition-colors py-2">Služby</button>
+                    <div class="absolute left-0 mt-0 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                        <div class="py-1">
+                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="autoservis.html">Autoservis</a>
+                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="pneuservis.html">Pneuservis</a>
+                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="geometria.html">Geometria</a>
+                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="lakovna.html">Lakovňa</a>
+                        </div>
+                    </div>
+                </div>
+                <a class="text-gray-700 hover:text-red-600 transition-colors py-2" href="blog.html">Blog</a>
+                <a class="text-gray-700 hover:text-red-600 transition-colors py-2" href="cennik.html">Cenník</a>
+                <a class="text-gray-700 hover:text-red-600 transition-colors py-2" href="index.html#contact">Kontakt</a>
+                <button id="open-booking-modal-desktop" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium h-10 px-6 py-2 bg-red-600 hover:bg-red-700 text-white">Objednať sa</button>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden p-2 text-gray-700 hover:text-red-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+            </button>
+        </div>
+    </div>
+</nav>
+<div id="mobile-menu" class="mobile-menu">
+    <a href="autoservis.html" class="mobile-menu-item">Autoservis</a>
+    <a href="pneuservis.html" class="mobile-menu-item">Pneuservis</a>
+    <a href="geometria.html" class="mobile-menu-item">Geometria</a>
+    <a href="lakovna.html" class="mobile-menu-item">Lakovňa</a>
+    <a href="blog.html" class="mobile-menu-item">Blog</a>
+    <a href="cennik.html" class="mobile-menu-item">Cenník</a>
+    <a href="index.html#contact" class="mobile-menu-item">Kontakt</a>
+    <button id="open-booking-modal-mobile" class="w-full mt-4 text-white bg-red-600 hover:bg-red-700 py-3 rounded-lg font-semibold">Objednať sa</button>
+</div>
+    <main>
+        <section class="relative h-96 bg-gray-800">
+            <img src="lakovna1.jpg" alt="Auto v profesionálnej lakovni" class="w-full h-full object-cover opacity-30"/>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center text-white px-4">
+                    <h1 class="text-5xl md:text-7xl font-bold">Lakovňa a klampiarske práce</h1>
+                    <p class="text-xl md:text-2xl mt-4">Vrátime vášmu autu pôvodný lesk a dokonalý vzhľad</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20">
+            <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1">
+                    <h2 class="text-4xl font-bold mb-6 text-gray-800">Dokonalý lak, dokonalý výsledok</h2>
+                    <p class="text-lg text-gray-600 mb-4">Či už ide o drobný škrabanec alebo opravu po nehode, naša lakovňa je pripravená vrátiť vaše vozidlo do stavu nového kusu. Používame špičkové laky a technológie miešania farieb, aby sme zaručili dokonalú zhodu s pôvodným odtieňom.</p>
+                    <p class="text-lg text-gray-600">Okrem lakovania poskytujeme aj komplexné klampiarske práce, od vyrovnávania preliačin až po výmenu celých častí karosérie. Riešime aj poistné udalosti a komunikáciu s poisťovňou vybavíme za vás.</p>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <img src="lakovna2.jpg" alt="Lakovník nanáša farbu na auto" class="rounded-lg shadow-2xl">
+                </div>
+            </div>
+        </section>
+        
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800">Naše lakovnícke a klampiarske služby</h2>
+                    <p class="text-lg text-gray-600 mt-2">Od drobných korekcií po kompletné renovácie.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-lg shadow-md flex items-start space-x-4"><div class="flex-shrink-0"><div class="flex items-center justify-center h-12 w-12 rounded-full bg-red-100 text-red-600"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10c0-2.34-.84-4.51-2.27-6.24"/><path d="m16 2.23 1.25-1.25a1.41 1.41 0 0 0-2-2L14 2.24"/><path d="m20.5 8-.57.57a2.5 2.5 0 0 1-3.53 0L15 7.17"/></svg></div></div><div><h3 class="text-xl font-semibold text-gray-800">Lakovanie dielov a vozidiel</h3><p class="mt-1 text-gray-600">Profesionálne lakovanie jednotlivých dielov alebo celého auta v bezprašnom boxe.</p></div></div>
+                    <div class="bg-white p-8 rounded-lg shadow-md flex items-start space-x-4"><div class="flex-shrink-0"><div class="flex items-center justify-center h-12 w-12 rounded-full bg-red-100 text-red-600"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5H2v14h10"/><path d="M18.5 7.5a2.5 2.5 0 0 1 0 5"/><path d="M22 10a4 4 0 0 1-4 4h-2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2a4 4 0 0 1 4 4Z"/></svg></div></div><div><h3 class="text-xl font-semibold text-gray-800">Klampiarske práce</h3><p class="mt-1 text-gray-600">Opravy a vyrovnávanie poškodených častí karosérie po nehodách.</p></div></div>
+                    <div class="bg-white p-8 rounded-lg shadow-md flex items-start space-x-4"><div class="flex-shrink-0"><div class="flex items-center justify-center h-12 w-12 rounded-full bg-red-100 text-red-600"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19a7 7 0 1 0 0-14 7 7 0 0 0 0 14z"/><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg></div></div><div><h3 class="text-xl font-semibold text-gray-800">Miešanie farieb</h3><p class="mt-1 text-gray-600">Garantujeme presný odtieň vďaka spektrofotometru a digitálnemu miešaniu.</p></div></div>
+                    <div class="bg-white p-8 rounded-lg shadow-md flex items-start space-x-4"><div class="flex-shrink-0"><div class="flex items-center justify-center h-12 w-12 rounded-full bg-red-100 text-red-600"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div></div><div><h3 class="text-xl font-semibold text-gray-800">Leštenie a renovácia laku</h3><p class="mt-1 text-gray-600">Odstránenie drobných škrabancov a oživenie laku do vysokého lesku.</p></div></div>
+                    <div class="bg-white p-8 rounded-lg shadow-md flex items-start space-x-4"><div class="flex-shrink-0"><div class="flex items-center justify-center h-12 w-12 rounded-full bg-red-100 text-red-600"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0M2 9.5h20"/></svg></div></div><div><h3 class="text-xl font-semibold text-gray-800">Opravy poistných udalostí</h3><p class="mt-1 text-gray-600">Kompletné riešenie opráv hradených poisťovňou vrátane administratívy.</p></div></div>
+                    <div class="bg-white p-8 rounded-lg shadow-md flex items-start space-x-4"><div class="flex-shrink-0"><div class="flex items-center justify-center h-12 w-12 rounded-full bg-red-100 text-red-600"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div></div><div><h3 class="text-xl font-semibold text-gray-800">Ochrana podvozku</h3><p class="mt-1 text-gray-600">Aplikácia ochranných náterov na podvozok proti korózii a poškodeniu.</p></div></div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Galéria našej lakovne</h2>
+                <div class="swiper gallery-swiper h-96 rounded-lg shadow-xl" style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="lakovna3.jpg"/></div>
+                        <div class="swiper-slide"><img src="lakovna1.jpg"/></div>
+                        <div class="swiper-slide"><img src="lakovna2.jpg"/></div>
+                        <div class="swiper-slide"><img src="lakovna3.jpg"/></div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-red-600 text-white">
+            <div class="container mx-auto px-4 py-16 text-center">
+                <h2 class="text-3xl font-bold mb-4">Zbavte sa škrabancov a nedokonalostí</h2>
+                <p class="text-lg mb-8 max-w-2xl mx-auto">Doprajte svojmu autu vzhľad, aký si zaslúži. Kontaktujte nás pre nezáväznú cenovú ponuku na lakovnícke alebo klampiarske práce.</p>
+                <button id="open-booking-modal-cta" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-semibold h-14 px-10 py-2 bg-white text-red-600 hover:bg-gray-100">Dohodnúť si obhliadku</button>
+            </div>
+        </section>
+    </main>
+</footer>
+    <div id="booking-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close-button">&times;</span>
+            <h2 class="text-2xl font-bold mb-4 text-center text-gray-800">Objednajte sa na servis</h2>
+            <p class="text-center text-gray-600 mb-6">Vyplňte formulár a my sa vám čo najskôr ozveme.</p>
+         <form action="https://formspree.io/f/mqalzkbl" method="POST" class="space-y-4">
+    <div>
+        <label class="block text-sm font-medium text-gray-700">Váš email:</label>
+        <input type="email" name="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500">
+    </div>
+
+    <div>
+        <label class="block text-sm font-medium text-gray-700">Telefón (nepovinné):</label>
+        <input type="tel" name="telefon" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500" placeholder="+421 9xx xxx xxx">
+    </div>
+
+    <div>
+        <label class="block text-sm font-medium text-gray-700">Vaša správa (ŠPZ, typ vozidla, požadovaná služba):</label>
+        <textarea name="message" required rows="4" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500"></textarea>
+    </div>
+    <div>
+        <button type="submit" class="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700">Odoslať objednávku</button>
+    </div>
+</form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js" defer></script>
+</body>
+</html>
