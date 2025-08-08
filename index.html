@@ -8,6 +8,7 @@
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="apple-touch-icon" href="/favicon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style type="text/tailwindcss">
         html { scroll-behavior: smooth; }
@@ -109,8 +110,56 @@
                     <div class="text-center p-6 bg-white rounded-lg shadow-md highlight-on-hover"><div class="flex justify-center mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12 text-red-600"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg></div><h3 class="text-xl font-semibold mb-3 text-gray-800">Záruka kvality</h3><p class="text-gray-600">Práca certifikovaných mechanikov</p></div>
                 </div>
             </div>
+
+<section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-800">Nahliadnite do našej dielne</h2>
+            <p class="text-lg text-gray-600 mt-2">Používame moderné vybavenie, aby sme sa o vaše auto postarali čo najlepšie.</p>
+        </div>
+        
+        <div class="swiper workshop-swiper h-64 md:h-80 rounded-lg group">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="dielna1.webp" class="glightbox" data-gallery="dielna-gallery">
+                        <img src="dielna1.webp" alt="Fotka dielne 1" class="w-full h-full object-cover cursor-pointer">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="dielna2.webp" class="glightbox" data-gallery="dielna-gallery">
+                        <img src="dielna2.webp" alt="Fotka dielne 2" class="w-full h-full object-cover cursor-pointer">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="dielna3.webp" class="glightbox" data-gallery="dielna-gallery">
+                        <img src="dielna3.webp" alt="Fotka dielne 3" class="w-full h-full object-cover cursor-pointer">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="dielna4.webp" class="glightbox" data-gallery="dielna-gallery">
+                        <img src="dielna4.webp" alt="Fotka dielne 4" class="w-full h-full object-cover cursor-pointer">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="dielna5.webp" class="glightbox" data-gallery="dielna-gallery">
+                        <img src="dielna5.webp" alt="Fotka dielne 5" class="w-full h-full object-cover cursor-pointer">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="dielna6.webp" class="glightbox" data-gallery="dielna-gallery">
+                        <img src="dielna6.webp" alt="Fotka dielne 6" class="w-full h-full object-cover cursor-pointer">
+                    </a>
+           
+                </div>
+            </div>
+            <div class="swiper-button-next text-white opacity-50 group-hover:opacity-100 transition-opacity"></div>
+            <div class="swiper-button-prev text-white opacity-50 group-hover:opacity-100 transition-opacity"></div>
+        </div>
+    </div>
+</section>
+
         </section>
-        <section id="nase-sluzby" class="py-20 bg-white">
+        <section id="nase-sluzby" class="pt-10 pb-20 bg-white">
              <div class="container mx-auto px-4">
                 <div class="text-center mb-16"><h2 class="text-4xl font-bold mb-6 text-gray-800">Naše služby</h2></div>
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -121,7 +170,7 @@
                 </div>
             </div>
         </section>
-        <section class="py-20 bg-gray-50">
+        <section class="pt-20 pb-10 bg-gray-50">
             <div class="container mx-auto px-4">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div>
@@ -228,6 +277,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
     <script src="script.js" defer></script>
 </body>
 </html>
