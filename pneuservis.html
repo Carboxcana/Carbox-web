@@ -6,7 +6,7 @@
     <title>Pneuservis a uskladnenie pneumatík - CarBox</title>
     <meta name="description" content="Kompletné pneuservisné služby: sezónne prezutie, vyváženie kolies, oprava defektov a profesionálne uskladnenie vašich pneumatík.">
     <link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <script src="https://cdn.tailwindcss.com"></script>
     <style type="text/tailwindcss">
@@ -17,12 +17,6 @@
         .mobile-menu.menu-open { display: block; transform: translateY(0); }
         .mobile-menu-item { display: block; padding: 0.75rem 0.5rem; font-size: 1.1rem; color: #374151; border-bottom: 1px solid #e5e7eb; }
         .mobile-menu-item:hover { background-color: #f3f4f6; }
-        .modal-overlay { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); justify-content: center; align-items: center; }
-        .modal-content { background-color: #fefefe; margin: auto; padding: 2rem; border-radius: 10px; width: 90%; max-width: 500px; position: relative; animation: fadeIn 0.4s; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-        .modal-close-button { color: #aaa; position: absolute; top: 10px; right: 20px; font-size: 28px; font-weight: bold; cursor: pointer; }
-        .modal-close-button:hover { color: black; }
-        @keyframes fadeIn { from {opacity: 0; transform: translateY(-20px);} to {opacity: 1; transform: translateY(0);} }
-        .modal-visible { display: flex; }
     </style>
     
     <script type="text/javascript">
@@ -39,42 +33,47 @@
 </head>
 <body class="bg-white">
     <nav class="bg-white shadow-lg sticky top-0 z-50">
-    <div class="container mx-auto px-4">
-        <div class="flex items-center justify-between h-20">
-            <a href="index.html"><img src="carbox_logo_t.png" alt="CarBox Logo" class="h-16 w-auto"/></a>
-            <div class="hidden md:flex items-center space-x-8">
-                <div class="relative group">
-                    <button class="text-gray-700 hover:text-red-600 transition-colors py-2">Služby</button>
-                    <div class="absolute left-0 mt-0 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
-                        <div class="py-1">
-                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="autoservis.html">Autoservis</a>
-                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="pneuservis.html">Pneuservis</a>
-                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="geometria.html">Geometria</a>
-                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="lakovna.html">Lakovňa</a>
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html"><img src="carbox_logo_t.png" alt="CarBox Logo" class="h-16 w-auto"/></a>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <div class="relative group">
+                        <button class="text-gray-700 hover:text-red-600 transition-colors py-2">Služby</button>
+                        <div class="absolute left-0 mt-0 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                            <div class="py-1">
+                                <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="autoservis.html">Autoservis</a>
+                                <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="pneuservis.html">Pneuservis</a>
+                                <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="geometria.html">Geometria</a>
+                                <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="lakovna.html">Lakovňa</a>
+                            </div>
                         </div>
                     </div>
+                    <a class="text-gray-700 hover:text-red-600 transition-colors py-2" href="blog.html">Blog</a>
+                    <a class="text-gray-700 hover:text-red-600 transition-colors py-2" href="cennik.html">Cenník</a>
+                    <a class="text-gray-700 hover:text-red-600 transition-colors py-2" href="index.html#contact">Kontakt</a>
+                    <a href="https://booqme.sk/sk/rezervacia/carbox" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium h-10 px-6 py-2 bg-red-600 hover:bg-red-700 text-white">Objednať sa</a>
                 </div>
-                <a class="text-gray-700 hover:text-red-600 transition-colors py-2" href="blog.html">Blog</a>
-                <a class="text-gray-700 hover:text-red-600 transition-colors py-2" href="cennik.html">Cenník</a>
-                <a class="text-gray-700 hover:text-red-600 transition-colors py-2" href="index.html#contact">Kontakt</a>
-                <button id="open-booking-modal-desktop" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium h-10 px-6 py-2 bg-red-600 hover:bg-red-700 text-white">Objednať sa</button>
+
+                <div class="flex items-center gap-2 md:hidden">
+                    <a href="https://booqme.sk/sk/rezervacia/carbox" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium px-4 py-2 bg-red-600 hover:bg-red-700 text-white">Objednať sa</a>
+                    <button id="mobile-menu-button" class="p-2 text-gray-700 hover:text-red-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+                    </button>
+                </div>
             </div>
-            <button id="mobile-menu-button" class="md:hidden p-2 text-gray-700 hover:text-red-600">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
-            </button>
         </div>
+    </nav>
+
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="autoservis.html" class="mobile-menu-item">Autoservis</a>
+        <a href="pneuservis.html" class="mobile-menu-item">Pneuservis</a>
+        <a href="geometria.html" class="mobile-menu-item">Geometria</a>
+        <a href="lakovna.html" class="mobile-menu-item">Lakovňa</a>
+        <a href="blog.html" class="mobile-menu-item">Blog</a>
+        <a href="cennik.html" class="mobile-menu-item">Cenník</a>
+        <a href="index.html#contact" class="mobile-menu-item">Kontakt</a>
     </div>
-</nav>
-<div id="mobile-menu" class="mobile-menu">
-    <a href="autoservis.html" class="mobile-menu-item">Autoservis</a>
-    <a href="pneuservis.html" class="mobile-menu-item">Pneuservis</a>
-    <a href="geometria.html" class="mobile-menu-item">Geometria</a>
-    <a href="lakovna.html" class="mobile-menu-item">Lakovňa</a>
-    <a href="blog.html" class="mobile-menu-item">Blog</a>
-    <a href="cennik.html" class="mobile-menu-item">Cenník</a>
-    <a href="index.html#contact" class="mobile-menu-item">Kontakt</a>
-    <button id="open-booking-modal-mobile" class="w-full mt-4 text-white bg-red-600 hover:bg-red-700 py-3 rounded-lg font-semibold">Objednať sa</button>
-</div>
 
     <main>
         <section class="relative h-96 bg-gray-800">
@@ -137,7 +136,7 @@
             <div class="container mx-auto px-4 py-16 text-center">
                 <h2 class="text-3xl font-bold mb-4">Pripravte sa na sezónu včas!</h2>
                 <p class="text-lg mb-8 max-w-2xl mx-auto">Nenechávajte prezutie na poslednú chvíľu. Objednajte sa k nám vopred a vyhnite sa zbytočnému čakaniu.</p>
-                <button id="open-booking-modal-cta" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-semibold h-14 px-10 py-2 bg-white text-red-600 hover:bg-gray-100">Objednať sa do pneuservisu</button>
+                <a href="https://booqme.sk/sk/rezervacia/carbox" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-semibold h-14 px-10 py-2 bg-white text-red-600 hover:bg-gray-100">Objednať sa do pneuservisu</a>
             </div>
         </section>
     </main>
@@ -146,32 +145,7 @@
       
     
    </footer>
-    <div id="booking-modal" class="modal-overlay">
-        <div class="modal-content">
-            <span class="modal-close-button">&times;</span>
-            <h2 class="text-2xl font-bold mb-4 text-center text-gray-800">Objednajte sa na servis</h2>
-            <p class="text-center text-gray-600 mb-6">Vyplňte formulár a my sa vám čo najskôr ozveme.</p>
-           <form action="https://formspree.io/f/mqalzkbl" method="POST" class="space-y-4">
-    <div>
-        <label class="block text-sm font-medium text-gray-700">Váš email:</label>
-        <input type="email" name="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500">
-    </div>
 
-    <div>
-        <label class="block text-sm font-medium text-gray-700">Telefón (nepovinné):</label>
-        <input type="tel" name="telefon" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500" placeholder="+421 9xx xxx xxx">
-    </div>
-
-    <div>
-        <label class="block text-sm font-medium text-gray-700">Vaša správa (ŠPZ, typ vozidla, požadovaná služba):</label>
-        <textarea name="message" required rows="4" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500"></textarea>
-    </div>
-    <div>
-        <button type="submit" class="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700">Odoslať objednávku</button>
-    </div>
-</form>
-        </div>
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js" defer></script>
 </body>
