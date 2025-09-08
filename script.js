@@ -80,33 +80,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- LOGIKA PRE OBJEDNÁVKOVÝ MODÁL ---
-    const modal = document.getElementById('booking-modal');
-    const closeModalBtn = document.querySelector('.modal-close-button');
-    const openModalBtns = [
-        document.getElementById('open-booking-modal-desktop'),
-        document.getElementById('open-booking-modal-mobile'),
-        document.getElementById('open-booking-modal-cta') 
-    ];
 
-    function openModal() {
-        if (modal) modal.classList.add('modal-visible');
-    }
-    function closeModal() {
-        if (modal) modal.classList.remove('modal-visible');
-    }
-
-    openModalBtns.forEach(btn => {
-        if (btn) btn.addEventListener('click', openModal);
-    });
-    if (closeModalBtn) {
-        closeModalBtn.addEventListener('click', closeModal);
-    }
-    if (modal) {
-        window.addEventListener('click', function(event) {
-            if (event.target == modal) {
-                closeModal();
-            }
-        });
-    }
 });
