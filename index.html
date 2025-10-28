@@ -24,6 +24,46 @@
 .modal-close-button:hover { color: #1f2937; }
 .modal-visible { display: flex; }
 @keyframes slideIn { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        /* ZIMNÁ AKCIA - Horný banner */
+        .promo-banner { background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); color: white; padding: 0.75rem 0; position: sticky; top: 80px; z-index: 40; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+        .promo-banner-content { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 1rem; text-align: center; padding: 0 1rem; }
+        .promo-banner-text { font-weight: 600; font-size: 0.95rem; }
+        .promo-banner-text .highlight { font-size: 1.1rem; font-weight: 700; }
+        .promo-banner-btn { background-color: white; color: #dc2626; padding: 0.5rem 1.25rem; border-radius: 0.375rem; font-weight: 600; font-size: 0.9rem; transition: all 0.3s; text-decoration: none; display: inline-block; }
+        .promo-banner-btn:hover { background-color: #fef2f2; transform: scale(1.05); }
+        
+        /* ZIMNÁ AKCIA - Pop-up */
+        .winter-popup { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; }
+        .winter-popup.show { display: flex; }
+        .winter-popup-content { position: relative; background: white; border-radius: 1rem; width: 90%; max-width: 600px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); animation: popupSlideIn 0.4s ease-out; }
+        .winter-popup-image { width: 100%; height: 250px; object-fit: cover; }
+        .winter-popup-body { padding: 2rem; text-align: center; }
+        .winter-popup-close { position: absolute; top: 15px; right: 15px; font-size: 2rem; line-height: 1; color: white; cursor: pointer; transition: all 0.2s; background: rgba(0,0,0,0.5); border: none; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 10; }
+        .winter-popup-close:hover { background: rgba(220, 38, 38, 0.9); transform: scale(1.1); }
+        .winter-popup-title { font-size: 2rem; font-weight: 700; color: #dc2626; margin-bottom: 1rem; }
+        .winter-popup-offer { font-size: 1.3rem; font-weight: 600; color: #1f2937; margin-bottom: 0.5rem; line-height: 1.4; }
+        .winter-popup-discount { font-size: 2.5rem; font-weight: 800; color: #dc2626; margin-bottom: 1rem; }
+        .winter-popup-note { font-size: 0.95rem; color: #6b7280; margin-bottom: 0.5rem; }
+        .winter-popup-validity { font-size: 0.9rem; color: #9ca3af; margin-bottom: 1.5rem; }
+        .winter-popup-btn { background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); color: white; padding: 0.875rem 2rem; border-radius: 0.5rem; font-weight: 700; font-size: 1.1rem; border: none; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3); text-decoration: none; display: inline-block; }
+        .winter-popup-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4); }
+        @keyframes popupSlideIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        
+        @media (max-width: 768px) {
+            .promo-banner { padding: 0.6rem 0; }
+            .promo-banner-text { font-size: 0.8rem; }
+            .promo-banner-text .highlight { font-size: 0.95rem; }
+            .promo-banner-btn { padding: 0.4rem 1rem; font-size: 0.85rem; }
+        }
+        @media (max-width: 640px) {
+            .winter-popup-image { height: 200px; }
+            .winter-popup-body { padding: 1.5rem; }
+            .winter-popup-title { font-size: 1.5rem; }
+            .winter-popup-offer { font-size: 1.1rem; }
+            .winter-popup-discount { font-size: 2rem; }
+        }
+    </style>
     </style>
     <script type="text/javascript">
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -81,19 +121,29 @@
     <a href="/cennik" class="mobile-menu-item">Cenník</a>
     <a href="#contact" class="mobile-menu-item">Kontakt</a>
 </div>
+<!-- ZIMNÁ AKCIA - Horný banner -->
+<div class="promo-banner">
+    <div class="promo-banner-content">
+        <span class="promo-banner-text">
+            <span class="highlight">Zľava 20 %</span> na sezónne prezutie | Platí pre online rezervácie do konca novembra 2025
+        </span>
+        <a href="https://www.rezervujsi.sk/carbox" target="_blank" rel="noopener noreferrer" class="promo-banner-btn">Objednať</a>
+    </div>
+</div>
+
     <main>
         <section class="relative h-[40rem] overflow-hidden group">
             <div class="swiper hero-swiper h-full">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide relative">
-                        <img src="https://images.pexels.com/photos/12185933/pexels-photo-12185933.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Moderný autoservis" class="w-full h-full object-cover"/>
+                        <img src="baner1.webp" alt="Moderný autoservis" class="w-full h-full object-cover"/>
                         <div class="absolute inset-0 bg-black bg-opacity-40"></div>
                         <div class="absolute inset-0 z-10 flex items-center justify-center text-white text-center">
                             <div class="max-w-4xl px-4"><h1 class="text-5xl md:text-6xl font-bold mb-6">CarBox Servis</h1><p class="text-xl md:text-2xl mb-8">Váš partner pre bezstarostnú jazdu.</p></div>
                         </div>
                     </div>
                     <div class="swiper-slide relative">
-                        <img src="https://images.pexels.com/photos/4489749/pexels-photo-4489749.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Detail motora auta" class="w-full h-full object-cover"/>
+                        <img src="baner2.webp" alt="Detail motora auta" class="w-full h-full object-cover"/>
                         <div class="absolute inset-0 bg-black bg-opacity-40"></div>
                         <div class="absolute inset-0 z-10 flex items-center justify-center text-white text-center">
                             <div class="max-w-4xl px-4"><h1 class="text-5xl md:text-6xl font-bold mb-6">Komplexná starostlivosť</h1><p class="text-xl md:text-2xl mb-8">Od diagnostiky po finálnu opravu.</p></div>
@@ -314,6 +364,20 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
     <script src="script.js" defer></script>
+<!-- ZIMNÁ AKCIA - Pop-up -->
+<div id="winter-popup" class="winter-popup">
+    <div class="winter-popup-content">
+        <button class="winter-popup-close" onclick="closeWinterPopup()">&times;</button>
+        <img src="akcia_baner.jpg" alt="Zimná akcia prezutie" class="winter-popup-image">
+        <div class="winter-popup-body">
+            <h2 class="winter-popup-title">ZIMNÁ AKCIA</h2>
+            <p class="winter-popup-offer">Zľava 20 % na sezónne prezutie<br>až do konca novembra 2025!</p>
+            <p class="winter-popup-note">Platí pre online rezervácie.</p>
+            <a href="https://www.rezervujsi.sk/carbox" target="_blank" rel="noopener noreferrer" class="winter-popup-btn" onclick="closeWinterPopup()">Objednať online</a>
+        </div>
+    </div>
+</div>
+
 </body>
 
 </html>

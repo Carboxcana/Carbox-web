@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.querySelector('.workshop-swiper')) {
         new Swiper('.workshop-swiper', {
             loop: true,
-            slidesPerView: 1, // Na mobiloch sa zobrazí 1 fotka
+            slidesPerView: 1,
             spaceBetween: 16,
             autoplay: {
                 delay: 4000,
@@ -27,13 +27,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
-            // Zmena počtu fotiek podľa veľkosti obrazovky
             breakpoints: {
-                640: { // pre tablety
+                640: {
                   slidesPerView: 2,
                   spaceBetween: 20
                 },
-                1024: { // pre desktopy
+                1024: {
                   slidesPerView: 3,
                   spaceBetween: 30
                 }
@@ -59,8 +58,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // NOVÉ: Inicializácia GLightbox pre zväčšovanie obrázkov
     if (typeof GLightbox !== 'undefined') {
         const lightbox = GLightbox({
-            selector: '.glightbox', // Hľadá všetky odkazy s touto triedou
-            loop: true, // Umožní prechádzať galériou dookola
+            selector: '.glightbox',
+            loop: true,
             touchNavigation: true
         });
     }
@@ -80,5 +79,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // --- ZIMNÁ AKCIA POP-UP ---
+    const winterPopup = document.getElementById('winter-popup');
+    if (winterPopup) {
+        // Skontroluj, či už bol pop-up zobrazený v tejto session
+        const popupShown = sessionStorage.getItem('winterPopupShown');
+        
+        if (!popupShown) {
+            setTimeout(function() {
+                winterPopup.classList.add('show');
+                sessionStorage.setItem('winterPopupShown', 'true');
+            }, 2000);
+        }
+        
+        // Zatvorenie pop-upu kliknutím mimo obsahu
+        winterPopup.addEventListener('click', function(e) {
+            if (e.target === winterPopup) {
+                closeWinterPopup();
+            }
+        });
+    }
 
 });
+
+// Globálna funkcia pre zatvorenie pop-upu
+function closeWinterPopup() {
+    const winterPopup = document.getElementById('winter-popup');
+    if (winterPopup) {
+        winterPopup.classList.remove('show');
+    }
+}
