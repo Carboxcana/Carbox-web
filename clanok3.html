@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="sk" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 signálov, že auto potrebuje servis | CarBox Blog</title>
+    <meta name="description" content="Ignorovanie týchto zvukov a signálov vás môže stáť veľa peňazí. Prečítajte si, kedy treba okamžite navštíviť autoservis.">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: { brand: { red: '#DC2626', darkRed: '#991B1B', black: '#111827', gray: '#F9FAFB' } }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        body { @apply text-slate-800 bg-white antialiased overflow-x-hidden; }
+        
+        /* Navbar & UI Elements */
+        .glass-nav { @apply sticky top-0 z-[100] bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300; }
+        .nav-link { @apply relative px-3 py-2 text-sm font-bold text-slate-600 transition-colors hover:text-brand-red cursor-pointer flex items-center gap-1; }
+        .dropdown-menu { @apply absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-slate-100 p-2 opacity-0 invisible transform -translate-y-2 transition-all duration-200 origin-top-left z-50; }
+        .group:hover .dropdown-menu { @apply opacity-100 visible translate-y-0; }
+        .dropdown-item { @apply flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-700 rounded-lg hover:bg-red-50 hover:text-brand-red transition-colors; }
+        .mobile-menu { @apply fixed inset-0 bg-white z-[90] flex flex-col pt-24 px-6 gap-6 transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto pb-10; }
+        .mobile-menu.menu-open { @apply translate-x-0; }
+        
+        /* Blog Content Styling */
+        .prose h2 { @apply text-2xl font-bold text-slate-900 mt-8 mb-4; }
+        .prose p { @apply text-lg text-slate-600 mb-6 leading-relaxed; }
+        .prose ul { @apply list-disc list-inside text-slate-600 mb-6 ml-4; }
+        .prose li { @apply mb-2; }
+        .prose strong { @apply text-slate-900 font-bold; }
+        .prose a { @apply text-brand-red font-semibold hover:underline; }
+    </style>
+</head>
+<body>
+
+<nav class="glass-nav" id="navbar">
+    <div class="container mx-auto px-4 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            <a href="/" class="flex-shrink-0 transition transform hover:scale-105"><img src="/carbox_logo_t.png" alt="CarBox Logo" class="h-12 w-auto"/></a>
+            <div class="hidden lg:flex items-center gap-6">
+                <div class="relative group h-full flex items-center">
+                    <button class="nav-link">Služby <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                    <div class="dropdown-menu">
+                        <a href="/autoservis" class="dropdown-item">Autoservis</a>
+                        <a href="/pneuservis" class="dropdown-item">Pneuservis</a>
+                        <a href="/geometria" class="dropdown-item">3D Geometria</a>
+                        <a href="/lakovna" class="dropdown-item">Lakovňa</a>
+                    </div>
+                </div>
+                <a class="nav-link text-brand-red" href="/blog">Blog</a>
+                <a class="nav-link" href="/cennik">Cenník</a>
+                <a class="nav-link" href="#contact">Kontakt</a>
+                <a href="https://www.rezervujsi.sk/carbox" target="_blank" class="ml-4 inline-flex items-center justify-center rounded-full text-sm font-bold h-10 px-6 bg-brand-red text-white shadow-md hover:bg-red-700 transition-all">Objednať sa online</a>
+            </div>
+            <button id="mobile-menu-button" class="lg:hidden p-2 text-slate-700 hover:text-brand-red transition bg-slate-100 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div id="mobile-menu" class="mobile-menu">
+    <div class="flex justify-between items-center mb-6">
+        <img src="/carbox_logo_t.png" alt="Logo" class="h-10 w-auto">
+        <button id="close-mobile-menu" class="p-2 bg-slate-100 rounded-full text-slate-500 hover:text-red-500">✕</button>
+    </div>
+    <div class="flex flex-col space-y-2">
+        <a href="/autoservis" class="text-lg font-bold text-slate-800 py-2 px-2 hover:bg-red-50 rounded-lg">Autoservis</a>
+        <a href="/pneuservis" class="text-lg font-bold text-slate-800 py-2 px-2 hover:bg-red-50 rounded-lg">Pneuservis</a>
+        <a href="/geometria" class="text-lg font-bold text-slate-800 py-2 px-2 hover:bg-red-50 rounded-lg">Geometria</a>
+        <a href="/blog" class="text-lg font-bold text-brand-red py-2 px-2 bg-red-50 rounded-lg">Blog</a>
+        <a href="/cennik" class="text-lg font-bold text-slate-800 py-2 px-2 hover:bg-red-50 rounded-lg">Cenník</a>
+        <a href="#contact" class="text-lg font-bold text-slate-800 py-2 px-2 hover:bg-red-50 rounded-lg">Kontakt</a>
+    </div>
+</div>
+
+<header class="relative pt-32 pb-20 bg-slate-50">
+    <div class="container mx-auto px-4 max-w-4xl text-center">
+        <span class="text-brand-red font-bold uppercase tracking-wider text-sm mb-4 block" data-aos="fade-up">Rady a Tipy</span>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight" data-aos="fade-up" data-aos-delay="100">
+            5 varovných signálov, že vaše auto potrebuje okamžitý servis
+        </h1>
+        <div class="flex items-center justify-center gap-4 text-slate-500 text-sm" data-aos="fade-up" data-aos-delay="200">
+            <span>9. Február 2026</span>
+            <span>•</span>
+            <span>Čítanie na 4 minúty</span>
+        </div>
+    </div>
+</header>
+
+<article class="py-16 bg-white">
+    <div class="container mx-auto px-4 max-w-3xl prose">
+        <img src="banner1.jpg" alt="Mechanik pri práci" class="w-full h-96 object-cover rounded-2xl shadow-lg mb-12" data-aos="fade-up">
+        
+        <p class="lead text-xl font-medium text-slate-700 mb-8">
+            Vaše auto sa s vami snaží komunikovať. Zvuky, vibrácie alebo kontrolky nie sú len otravné detaily, ale volanie o pomoc. Ignorovanie týchto signálov často vedie k drahým opravám, ktorým sa dalo predísť.
+        </p>
+
+        <h2>1. Volant vibruje alebo auto "ťahá" do strany</h2>
+        <p>
+            Ak musíte na rovnej ceste neustále korigovať smer volantom, alebo cítite vibrácie pri vyšších rýchlostiach, problém je pravdepodobne v podvozku. Najčastejšie ide o rozhádzanú geometriu alebo nevyvážené kolesá.
+        </p>
+        <p>
+            Dlhodobé jazdenie s takouto poruchou ničí vaše pneumatiky a zvyšuje spotrebu paliva. Riešením je <a href="/geometria">profesionálna 3D geometria</a>, ktorú v CarBoxe nastavíme na milimeter presne.
+        </p>
+
+        <h2>2. Pískanie alebo škrípanie pri brzdení</h2>
+        <p>
+            Brzdy sú najdôležitejším bezpečnostným prvkom. Ak počujete pri brzdení kovový zvuk, pravdepodobne sú vaše brzdové platničky úplne opotrebované a kov trie o kov. To nielenže ničí kotúče (čo predražuje opravu), ale radikálne znižuje brzdný účinok.
+        </p>
+        <div class="bg-red-50 border-l-4 border-brand-red p-6 my-8 rounded-r-lg">
+            <p class="mb-0 text-slate-800 italic"><strong>Náš tip:</strong> Nečakajte na STK. Ak cítite, že brzdový pedál je "mäkký" alebo auto brzdí slabšie, objednajte sa na kontrolu ihneď.</p>
+        </div>
+
+        <h2>3. Klimatizácia zapácha alebo nechladí</h2>
+        <p>
+            Cítite po zapnutí klimatizácie nepríjemný zápach? To je znakom plesní a baktérií vo výparníku, čo môže spôsobovať alergie a dýchacie problémy. Ak klíma nechladí, pravdepodobne uniklo chladivo. V našom servise robíme <a href="/autoservis">kompletný servis a dezinfekciu klimatizácie</a> ozónom.
+        </p>
+
+        <h2>4. Kontrolka motora (Check Engine)</h2>
+        <p>
+            Svietiaca oranžová kontrolka motora nemusí znamenať okamžitú katastrofu, ale určite znamená, že riadiaca jednotka zaznamenala chybu. Môže ísť o banálnu sondu, ale aj o vážny problém so vstrekovaním či katalyzátorom. Jediný spôsob, ako to zistiť, je pripojenie na <a href="/autoservis">počítačovú diagnostiku</a>.
+        </p>
+
+        <h2>5. Flaky pod autom</h2>
+        <p>
+            Vidíte po odparkovaní pod autom mláku?
+        </p>
+        <ul>
+            <li><strong>Čierna/hnedá kvapalina:</strong> Únik motorového oleja.</li>
+            <li><strong>Zelená/ružová kvapalina:</strong> Únik chladiacej kvapaliny (riziko prehriatia motora).</li>
+            <li><strong>Číra voda:</strong> Zvyčajne len kondenzát z klimatizácie (to je v poriadku).</li>
+        </ul>
+
+        <hr class="border-slate-200 my-12">
+
+        <h2 class="mb-6">Záver: Prevencia je lacnejšia ako oprava</h2>
+        <p>
+            Ak ste na svojom aute spozorovali ktorýkoľvek z týchto signálov, neváhajte. Včasná návšteva servisu vám ušetrí stovky eur za následné opravy. V CarBoxe v Čani sa na vaše auto pozrieme, diagnostikujeme problém a navrhneme férové riešenie.
+        </p>
+    </div>
+</article>
+
+<section class="py-20 bg-slate-900 text-white relative overflow-hidden">
+    <div class="container mx-auto px-4 text-center relative z-10">
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Máte podozrenie na poruchu?</h2>
+        <p class="text-lg text-slate-300 mb-10 max-w-2xl mx-auto">
+            Neriskujte na cestách. Objednajte sa k nám na rýchlu kontrolu a jazdite bez starostí.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="https://www.rezervujsi.sk/carbox" target="_blank" class="bg-brand-red text-white font-bold py-4 px-10 rounded-full hover:bg-red-700 transition shadow-lg hover:shadow-red-900/50">
+                Objednať sa na servis
+            </a>
+            <a href="tel:+421905154247" class="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold py-4 px-10 rounded-full hover:bg-white hover:text-black transition">
+                Zavolať nám
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer id="contact" class="bg-slate-900 text-slate-300 py-16 border-t border-slate-800">
+    <div class="container mx-auto px-4 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12">
+            <div class="space-y-6">
+                <h2 class="text-2xl font-bold text-white mb-6">Kontaktujte nás</h2>
+                <div class="flex items-start gap-4">
+                    <div class="text-brand-red mt-1"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></div>
+                    <div>
+                        <p class="text-white font-semibold">Adresa Servisu</p>
+                        <p class="text-slate-400">Železničná 173/2, 044 14 Čaňa</p>
+                        <a href="https://maps.google.com/?q=CarBox+Čaňa" target="_blank" class="text-sm text-brand-red hover:underline">Navigovať →</a>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="text-brand-red mt-1"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg></div>
+                    <div>
+                        <p class="text-white font-semibold">Telefón</p>
+                        <p class="text-slate-400">+421 905 154 247</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 lg:mt-0 rounded-lg overflow-hidden border border-slate-700 h-48">
+                <iframe src="https://maps.google.com/?q=CarBox+Čaňa" width="100%" height="100%" style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+        <div class="border-t border-slate-800 mt-12 pt-8 text-center text-sm text-slate-500">
+            <p>© 2025 CarBox. Všetky práva vyhradené. Vytvoril: <a href="http://www.unoneto.eu" target="_blank" class="hover:text-white transition-colors underline">Unoneto.eu</a></p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ once: true, offset: 50, duration: 800 });
+
+    const menuBtn = document.getElementById('mobile-menu-button');
+    const closeMenuBtn = document.getElementById('close-mobile-menu');
+    const menu = document.getElementById('mobile-menu');
+    const toggleMenu = () => { menu.classList.toggle('menu-open'); document.body.style.overflow = menu.classList.contains('menu-open') ? 'hidden' : ''; };
+    if(menuBtn) menuBtn.addEventListener('click', toggleMenu);
+    if(closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
+</script>
+
+</body>
+</html>

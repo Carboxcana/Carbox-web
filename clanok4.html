@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="sk" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarná údržba: Ako pripraviť auto po zime | CarBox Blog</title>
+    <meta name="description" content="Zima dáva autám zabrať. Soľ, výtlky a mráz. Prečítajte si 5 krokov, ako pripraviť vaše vozidlo na jarnú sezónu.">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: { brand: { red: '#DC2626', darkRed: '#991B1B', black: '#111827', gray: '#F9FAFB' } }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        body { @apply text-slate-800 bg-white antialiased overflow-x-hidden; }
+        
+        /* Navbar & UI Elements */
+        .glass-nav { @apply sticky top-0 z-[100] bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300; }
+        .nav-link { @apply relative px-3 py-2 text-sm font-bold text-slate-600 transition-colors hover:text-brand-red cursor-pointer flex items-center gap-1; }
+        .dropdown-menu { @apply absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-slate-100 p-2 opacity-0 invisible transform -translate-y-2 transition-all duration-200 origin-top-left z-50; }
+        .group:hover .dropdown-menu { @apply opacity-100 visible translate-y-0; }
+        .dropdown-item { @apply flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-700 rounded-lg hover:bg-red-50 hover:text-brand-red transition-colors; }
+        .mobile-menu { @apply fixed inset-0 bg-white z-[90] flex flex-col pt-24 px-6 gap-6 transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto pb-10; }
+        .mobile-menu.menu-open { @apply translate-x-0; }
+        
+        /* Blog Content Styling */
+        .prose h2 { @apply text-2xl font-bold text-slate-900 mt-10 mb-4 border-l-4 border-brand-red pl-4; }
+        .prose p { @apply text-lg text-slate-600 mb-6 leading-relaxed; }
+        .prose ul { @apply list-disc list-inside text-slate-600 mb-6 ml-4 space-y-2; }
+        .prose li { @apply mb-2; }
+        .prose strong { @apply text-slate-900 font-bold; }
+        .prose a { @apply text-brand-red font-bold hover:underline decoration-2 underline-offset-2; }
+        .prose img { @apply rounded-xl shadow-lg my-8 w-full object-cover; }
+    </style>
+</head>
+<body>
+
+<nav class="glass-nav" id="navbar">
+    <div class="container mx-auto px-4 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            <a href="/" class="flex-shrink-0 transition transform hover:scale-105"><img src="/carbox_logo_t.png" alt="CarBox Logo" class="h-12 w-auto"/></a>
+            <div class="hidden lg:flex items-center gap-6">
+                <div class="relative group h-full flex items-center">
+                    <button class="nav-link">Služby <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                    <div class="dropdown-menu">
+                        <a href="/autoservis" class="dropdown-item">Autoservis</a>
+                        <a href="/pneuservis" class="dropdown-item">Pneuservis</a>
+                        <a href="/geometria" class="dropdown-item">3D Geometria</a>
+                        <a href="/lakovna" class="dropdown-item">Lakovňa</a>
+                    </div>
+                </div>
+                <a class="nav-link text-brand-red" href="/blog">Blog</a>
+                <a class="nav-link" href="/cennik">Cenník</a>
+                <a class="nav-link" href="#contact">Kontakt</a>
+                <a href="https://www.rezervujsi.sk/carbox" target="_blank" class="ml-4 inline-flex items-center justify-center rounded-full text-sm font-bold h-10 px-6 bg-brand-red text-white shadow-md hover:bg-red-700 transition-all">Objednať sa online</a>
+            </div>
+            <button id="mobile-menu-button" class="lg:hidden p-2 text-slate-700 hover:text-brand-red transition bg-slate-100 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div id="mobile-menu" class="mobile-menu">
+    <div class="flex justify-between items-center mb-6">
+        <img src="/carbox_logo_t.png" alt="Logo" class="h-10 w-auto">
+        <button id="close-mobile-menu" class="p-2 bg-slate-100 rounded-full text-slate-500 hover:text-red-500">✕</button>
+    </div>
+    <div class="flex flex-col space-y-2">
+        <a href="/autoservis" class="text-lg font-bold text-slate-800 py-2 px-2 hover:bg-red-50 rounded-lg">Autoservis</a>
+        <a href="/pneuservis" class="text-lg font-bold text-slate-800 py-2 px-2 hover:bg-red-50 rounded-lg">Pneuservis</a>
+        <a href="/geometria" class="text-lg font-bold text-slate-800 py-2 px-2 hover:bg-red-50 rounded-lg">Geometria</a>
+        <a href="/blog" class="text-lg font-bold text-brand-red py-2 px-2 bg-red-50 rounded-lg">Blog</a>
+        <a href="/cennik" class="text-lg font-bold text-slate-800 py-2 px-2 hover:bg-red-50 rounded-lg">Cenník</a>
+        <a href="#contact" class="text-lg font-bold text-slate-800 py-2 px-2 hover:bg-red-50 rounded-lg">Kontakt</a>
+    </div>
+</div>
+
+<header class="relative pt-32 pb-20 bg-slate-50">
+    <div class="container mx-auto px-4 max-w-4xl text-center">
+        <span class="bg-blue-100 text-blue-800 font-bold uppercase tracking-wider text-xs px-3 py-1 rounded-full mb-4 inline-block" data-aos="fade-up">Sezónne rady</span>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight" data-aos="fade-up" data-aos-delay="100">
+            Jarná očista: 5 krokov, ako dostať auto po zime späť do formy
+        </h1>
+        <div class="flex items-center justify-center gap-4 text-slate-500 text-sm" data-aos="fade-up" data-aos-delay="200">
+            <span>20. Február 2026</span>
+            <span>•</span>
+            <span>Čítanie na 5 minút</span>
+        </div>
+    </div>
+</header>
+
+<article class="py-16 bg-white">
+    <div class="container mx-auto px-4 max-w-3xl prose">
+        <img src="pneuservis2.jpeg" alt="Jarná údržba auta" class="w-full h-96 object-cover rounded-2xl shadow-lg mb-12" data-aos="fade-up">
+        
+        <p class="lead text-xl font-medium text-slate-700 mb-8 border-b border-slate-100 pb-8">
+            Zima je pre každé vozidlo najnáročnejším obdobím roka. Posypová soľ, mráz, výtlky ukryté pod snehom a studené štarty zanechávajú stopy. Keď sa oteplí, nestačí len vymeniť pneumatiky. Tu je váš manuál jarnej údržby.
+        </p>
+
+        <h2>1. Dôkladné umytie podvozku je základ</h2>
+        <p>
+            Soľ je tichý zabijak karosérie a podvozkových častí. Aj keď už nemrzne, soľ usadená v podbehoch, na ramenách náprav a výfuku naďalej pracuje a spôsobuje koróziu.
+        </p>
+        <p>
+            Navštívte kvalitnú autoumyváreň s programom na umývanie podvozku, alebo (ešte lepšie) nechajte podvozok vystriekať tlakovou vodou. Nezabudnite skontrolovať lak – každý škrabanec od kamienkov je potenciálnym ložiskom hrdze.
+        </p>
+
+        <h2>2. Prezutie pneumatík a kontrola diskov</h2>
+        <p>
+            Keď teploty stabilne prekročia 7 °C, je čas na letné pneu. Zimné zmesi sa v teple prehrievajú a majú dlhšiu brzdnú dráhu. Pri <a href="/pneuservis">pneuservise</a> v CarBoxe vždy kontrolujeme aj stav diskov – zima a obrubníky pod snehom im často dajú zabrať.
+        </p>
+
+        <h2>3. Geometria: Obeť zimných výtlkov</h2>
+        <p>
+            Stačí jedna väčšia jama, ktorú ste v zime nevideli, a geometria kolies môže byť rozhodená. Výsledkom je:
+        </p>
+        <ul>
+            <li>Nerovnomerné a rýchlejšie dranie pneumatík.</li>
+            <li>Volant, ktorý je pri jazde rovno natočený do strany.</li>
+            <li>Vyššia spotreba paliva.</li>
+        </ul>
+        <div class="bg-blue-50 border-l-4 border-blue-600 p-6 my-8 rounded-r-lg">
+            <p class="mb-0 text-slate-800"><strong>Tip odborníka:</strong> Odporúčame vykonať <a href="/geometria">3D geometriu</a> pri každom sezónnom prezutí. Je to investícia 30-50 €, ktorá vám zachráni sadu pneumatík za stovky eur.</p>
+        </div>
+
+        <h2>4. Brzdy a prevádzkové kvapaliny</h2>
+        <p>
+            Soľ a vlhkosť sú nepriateľom brzdových kotúčov a strmeňov. Po zime sa často stáva, že brzdové platničky "visia" a nevracajú sa správne, čo spôsobuje prehrievanie. Skontrolujte tiež hladinu oleja a chladiacej kvapaliny. Zimnú zmes do ostrekovačov vymeňte za letnú – lepšie odstraňuje hmyz.
+        </p>
+
+        <h2>5. Kabínový filter a klimatizácia</h2>
+        <p>
+            Prichádza jar a s ňou peľová sezóna. Ak máte zanesený kabínový filter, všetok prach a alergény dýchate vy aj vaša rodina. Vlhkosť zo zimy sa navyše drží vo výparníku klimatizácie, čo vytvára ideálne prostredie pre plesne.
+        </p>
+        <p>
+            Doprajte si čistý vzduch. V rámci <a href="/autoservis">jarnej prehliadky</a> vám vymeníme filter a vydezinfikujeme klimatizáciu ozónom.
+        </p>
+
+        <hr class="border-slate-200 my-12">
+
+        <h2 class="mb-6">Zhrnutie</h2>
+        <p>
+            Venovať autu hodinu času po zime sa oplatí. Predĺžite jeho životnosť a vyhnete sa nečakaným poruchám počas letných dovoleniek. Ak si na kontrolu netrúfate sami, sme tu pre vás.
+        </p>
+    </div>
+</article>
+
+<section class="py-20 bg-slate-900 text-white relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/20 rounded-full blur-3xl -mr-10 -mt-10"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-red-600/10 rounded-full blur-3xl -ml-10 -mb-10"></div>
+
+    <div class="container mx-auto px-4 text-center relative z-10">
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Pripravte svoje auto na leto</h2>
+        <p class="text-lg text-slate-300 mb-10 max-w-2xl mx-auto">
+            Objednajte sa na jarnú kontrolu a výmenu pneumatík v CarBoxe. Všetko vybavíme na jednom mieste.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="https://www.rezervujsi.sk/carbox" target="_blank" class="bg-brand-red text-white font-bold py-4 px-10 rounded-full hover:bg-red-700 transition shadow-lg hover:shadow-red-900/50 transform hover:-translate-y-1">
+                Rezervovať termín
+            </a>
+            <a href="tel:+421905154247" class="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold py-4 px-10 rounded-full hover:bg-white hover:text-black transition">
+                Zavolať nám
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer id="contact" class="bg-slate-900 text-slate-300 py-16 border-t border-slate-800">
+    <div class="container mx-auto px-4 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12">
+            <div class="space-y-6">
+                <h2 class="text-2xl font-bold text-white mb-6">Kontaktujte nás</h2>
+                <div class="flex items-start gap-4">
+                    <div class="text-brand-red mt-1"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></div>
+                    <div>
+                        <p class="text-white font-semibold">Adresa Servisu</p>
+                        <p class="text-slate-400">Železničná 173/2, 044 14 Čaňa</p>
+                        <a href="https://maps.google.com/?q=CarBox+Čaňa" target="_blank" class="text-sm text-brand-red hover:underline">Navigovať →</a>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="text-brand-red mt-1"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg></div>
+                    <div>
+                        <p class="text-white font-semibold">Telefón</p>
+                        <p class="text-slate-400">+421 905 154 247</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 lg:mt-0 rounded-lg overflow-hidden border border-slate-700 h-48">
+                <iframe src="https://maps.google.com/?q=CarBox+Čaňa" width="100%" height="100%" style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+        <div class="border-t border-slate-800 mt-12 pt-8 text-center text-sm text-slate-500">
+            <p>© 2025 CarBox. Všetky práva vyhradené. Vytvoril: <a href="http://www.unoneto.eu" target="_blank" class="hover:text-white transition-colors underline">Unoneto.eu</a></p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ once: true, offset: 50, duration: 800 });
+
+    const menuBtn = document.getElementById('mobile-menu-button');
+    const closeMenuBtn = document.getElementById('close-mobile-menu');
+    const menu = document.getElementById('mobile-menu');
+    const toggleMenu = () => { menu.classList.toggle('menu-open'); document.body.style.overflow = menu.classList.contains('menu-open') ? 'hidden' : ''; };
+    if(menuBtn) menuBtn.addEventListener('click', toggleMenu);
+    if(closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
+</script>
+
+</body>
+</html>
