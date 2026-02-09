@@ -1,24 +1,67 @@
 <!DOCTYPE html>
-<html lang="sk">
+<html lang="sk" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Geometria podvozku - CarBox</title>
+    <title>3D Geometria podvozku | CarBox</title>
     <meta name="description" content="Profesionálne nastavenie 3D geometrie podvozku pre maximálnu bezpečnosť, dlhšiu životnosť pneumatík a lepší komfort jazdy.">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: {
+                        brand: { red: '#DC2626', darkRed: '#991B1B', black: '#111827', gray: '#F9FAFB' }
+                    },
+                    boxShadow: {
+                        'card': '0 10px 30px -10px rgba(0,0,0,0.08)',
+                        'card-hover': '0 20px 40px -5px rgba(220, 38, 38, 0.15)'
+                    }
+                }
+            }
+        }
+    </script>
+
     <style type="text/tailwindcss">
-        html { scroll-behavior: smooth; }
-        .highlight-on-hover { transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; }
-        .highlight-on-hover:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
-        .mobile-menu { display: none; position: fixed; top: 80px; left: 0; right: 0; background-color: white; padding: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 40; transform: translateY(-100%); transition: transform 0.3s ease-in-out; border-bottom: 1px solid #e5e7eb; }
-        .mobile-menu.menu-open { display: block; transform: translateY(0); }
-        .mobile-menu-item { display: block; padding: 0.75rem 0.5rem; font-size: 1.1rem; color: #374151; border-bottom: 1px solid #e5e7eb; }
-        .mobile-menu-item:hover { background-color: #f3f4f6; }
+        body { @apply text-slate-800 bg-white antialiased overflow-x-hidden; }
+        
+        /* Navbar */
+        .glass-nav { @apply sticky top-0 z-[100] bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300; }
+        .nav-link { @apply relative px-3 py-2 text-sm font-bold text-slate-600 transition-colors hover:text-brand-red cursor-pointer flex items-center gap-1; }
+        
+        /* Dropdown */
+        .dropdown-menu { @apply absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-slate-100 p-2 opacity-0 invisible transform -translate-y-2 transition-all duration-200 origin-top-left z-50; }
+        .group:hover .dropdown-menu { @apply opacity-100 visible translate-y-0; }
+        .dropdown-item { @apply flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-700 rounded-lg hover:bg-red-50 hover:text-brand-red transition-colors; }
+
+        /* Cards */
+        .service-card { @apply bg-white border border-slate-100 rounded-2xl p-8 shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2 hover:border-red-100 relative overflow-hidden h-full flex flex-col; }
+        .icon-box { @apply w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center text-slate-700 mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors duration-300; }
+
+        /* Mobile Menu */
+        .mobile-menu { @apply fixed inset-0 bg-white z-[90] flex flex-col pt-24 px-6 gap-6 transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto pb-10; }
+        .mobile-menu.menu-open { @apply translate-x-0; }
+
+        /* Swiper Custom */
+        .swiper-button-next, .swiper-button-prev { color: white !important; transform: scale(0.7); font-weight: bold; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        
+        /* Modals */
+        .modal-overlay { @apply hidden fixed inset-0 z-[2000] bg-black/60 backdrop-blur-sm justify-center items-center p-4; }
+        .modal-visible { @apply flex; }
+        .modal-content { @apply relative bg-white rounded-2xl p-8 w-full max-w-[500px] shadow-2xl animate-[slideUp_0.3s_ease-out]; }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     </style>
     
     <script type="text/javascript">
@@ -33,120 +76,303 @@
         })();
     </script>
 </head>
-<body class="bg-white">
+<body>
 
-<nav class="bg-white shadow-lg sticky top-0 z-50">
-    <div class="container mx-auto px-4">
+<nav class="glass-nav" id="navbar">
+    <div class="container mx-auto px-4 lg:px-8">
         <div class="flex items-center justify-between h-20">
-            <a href="/"><img src="carbox_logo_t.png" alt="CarBox Logo" class="h-16 w-auto"/></a>
-            
-            <div class="hidden md:flex items-center space-x-8">
-                <div class="relative group">
-                    <button class="text-gray-700 hover:text-red-600 transition-colors py-2">Služby</button>
-                    <div class="absolute left-0 mt-0 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
-                        <div class="py-1">
-                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="autoservis.html">Autoservis</a>
-                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="pneuservis.html">Pneuservis</a>
-                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="geometria.html">Geometria</a>
-                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600" href="lakovna.html">Lakovňa</a>
-                        </div>
+            <a href="/" class="flex-shrink-0 transition transform hover:scale-105">
+                <img src="/carbox_logo_t.png" alt="CarBox Logo" class="h-12 w-auto"/>
+            </a>
+
+            <div class="hidden lg:flex items-center gap-6">
+                <div class="relative group h-full flex items-center">
+                    <button class="nav-link text-brand-red">
+                        Služby
+                        <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="/autoservis" class="dropdown-item">Autoservis</a>
+                        <a href="/pneuservis" class="dropdown-item">Pneuservis</a>
+                        <a href="/geometria" class="dropdown-item bg-red-50 text-brand-red">3D Geometria</a>
+                        <a href="/lakovna" class="dropdown-item">Lakovňa</a>
                     </div>
                 </div>
-                <a class="text-gray-700 hover:text-red-600 transition-colors py-2" href="blog.html">Blog</a>
-                <a class="text-gray-700 hover:text-red-600 transition-colors py-2" href="cennik.html">Cenník</a>
-                <a class="text-gray-700 hover:text-red-600 transition-colors py-2" href="/#contact">Kontakt</a>
-                <a href="https://www.rezervujsi.sk/carbox" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium h-10 px-6 py-2 bg-red-600 hover:bg-red-700 text-white">Objednať sa</a>
+
+                <a class="nav-link" href="/blog">Blog</a>
+                <a class="nav-link" href="/cennik">Cenník</a>
+                <a class="nav-link" href="#contact">Kontakt</a>
+                
+                <a href="https://www.rezervujsi.sk/carbox" target="_blank" class="ml-4 inline-flex items-center justify-center rounded-full text-sm font-bold h-10 px-6 bg-brand-red text-white shadow-md hover:bg-red-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                   Objednať sa online
+                </a>
             </div>
 
-            <div class="flex items-center gap-2 md:hidden">
-                <a href="https://www.rezervujsi.sk/carbox" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium px-4 py-2 bg-red-600 hover:bg-red-700 text-white">Objednať sa</a>
-                <button id="mobile-menu-button" class="p-2 text-gray-700 hover:text-red-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
-                </button>
-            </div>
+            <button id="mobile-menu-button" class="lg:hidden p-2 text-slate-700 hover:text-brand-red transition bg-slate-100 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
         </div>
     </div>
 </nav>
 
 <div id="mobile-menu" class="mobile-menu">
-    <a href="autoservis.html" class="mobile-menu-item">Autoservis</a>
-    <a href="pneuservis.html" class="mobile-menu-item">Pneuservis</a>
-    <a href="geometria.html" class="mobile-menu-item">Geometria</a>
-    <a href="lakovna.html" class="mobile-menu-item">Lakovňa</a>
-    <a href="blog.html" class="mobile-menu-item">Blog</a>
-    <a href="cennik.html" class="mobile-menu-item">Cenník</a>
-    <a href="/#contact" class="mobile-menu-item">Kontakt</a>
+    <div class="flex justify-between items-center mb-6">
+        <img src="/carbox_logo_t.png" alt="Logo" class="h-10 w-auto">
+        <button id="close-mobile-menu" class="p-2 bg-slate-100 rounded-full text-slate-500 hover:text-red-500">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+    </div>
+    
+    <div class="flex flex-col space-y-2">
+        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest px-2">Služby</p>
+        <a href="/autoservis" class="text-lg font-bold text-slate-800 py-2 px-2 hover:bg-red-50 rounded-lg">Autoservis</a>
+        <a href="/pneuservis" class="text-lg font-bold text-slate-800 py-2 px-2 hover:bg-red-50 rounded-lg">Pneuservis</a>
+        <a href="/geometria" class="text-lg font-bold text-brand-red py-2 px-2 bg-red-50 rounded-lg">Geometria</a>
+        <a href="/lakovna" class="text-lg font-bold text-slate-800 py-2 px-2 hover:bg-red-50 rounded-lg">Lakovňa</a>
+        <div class="h-px bg-slate-100 my-2"></div>
+        <a href="/cennik" class="text-lg font-bold text-slate-800 py-2 px-2 hover:bg-red-50 rounded-lg">Cenník</a>
+        <a href="/blog" class="text-lg font-bold text-slate-800 py-2 px-2 hover:bg-red-50 rounded-lg">Blog</a>
+        <a href="#contact" class="text-lg font-bold text-slate-800 py-2 px-2 hover:bg-red-50 rounded-lg">Kontakt</a>
+        <a href="https://www.rezervujsi.sk/carbox" class="mt-6 w-full py-3 bg-brand-red text-white text-lg font-bold rounded-xl text-center shadow-lg">Objednať sa online</a>
+    </div>
 </div>
 
-    <main>
-        <section class="relative h-96 bg-gray-800">
-            <img src="geometria5.jpg" alt="Laserová 3D geometria" class="w-full h-full object-cover opacity-30"/>
-            <div class="absolute inset-0 flex items-center justify-center">
-                <div class="text-center text-white px-4">
-                    <h1 class="text-5xl md:text-7xl font-bold">3D Geometria podvozku</h1>
-                    <p class="text-xl md:text-2xl mt-4">Pre vašu bezpečnosť a dlhšiu životnosť pneumatík</p>
-                </div>
+<header class="relative bg-slate-900 h-[60vh] min-h-[500px] flex items-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <img src="geometria5.jpg" alt="Laserová 3D geometria" class="w-full h-full object-cover opacity-30">
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
+    </div>
+    <div class="container mx-auto px-4 lg:px-8 relative z-10">
+        <div class="max-w-3xl" data-aos="fade-up">
+            <span class="inline-block py-1 px-3 rounded-full bg-red-600/20 border border-red-500/50 text-red-400 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">Presnosť na milimeter</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
+                3D Geometria <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-400">Podvozku</span>
+            </h1>
+            <p class="text-xl text-slate-300 mb-8 max-w-2xl">
+                Pre vašu bezpečnosť, dlhšiu životnosť pneumatík a lepší komfort jazdy. Najmodernejšia 3D technológia.
+            </p>
+            <div class="flex gap-4">
+                <button class="open-modal-btn px-8 py-3 bg-brand-red text-white font-bold rounded-full hover:bg-red-700 transition shadow-lg hover:shadow-red-900/50">
+                    Objednať geometriu
+                </button>
             </div>
-        </section>
+        </div>
+    </div>
+</header>
 
-        <section class="py-20">
-            <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-4xl font-bold mb-6 text-gray-800">Prečo je správna geometria taká dôležitá?</h2>
-                    <p class="text-lg text-gray-600 mb-4">Správne nastavená geometria kolies je kľúčová nielen pre životnosť vašich pneumatík, ale predovšetkým pre bezpečnosť a ovládateľnosť vozidla. Naše moderné 3D laserové zariadenie zaručuje maximálnu presnosť nastavenia podľa predpisov výrobcu.</p>
-                    <p class="text-lg text-gray-600">Investícia do geometrie sa vám vráti v podobe nižšej spotreby paliva, rovnomerného opotrebenia pneumatík a predovšetkým v istote, že sa vaše auto na ceste správa presne tak, ako má.</p>
-                </div>
-                <div>
-                    <img src="geometria1.webp" alt="Detail laserového senzora na kolese" class="rounded-lg shadow-2xl">
-                </div>
+<section class="py-24 bg-white">
+    <div class="container mx-auto px-4 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-6">Prečo je správna geometria dôležitá?</h2>
+                <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+                    Správne nastavená geometria kolies je kľúčová nielen pre životnosť vašich pneumatík, ale predovšetkým pre bezpečnosť a ovládateľnosť vozidla. Naše moderné 3D laserové zariadenie zaručuje maximálnu presnosť nastavenia podľa predpisov výrobcu.
+                </p>
+                <p class="text-lg text-slate-600 leading-relaxed border-l-4 border-brand-red pl-6">
+                    Investícia do geometrie sa vám vráti v podobe nižšej spotreby paliva, rovnomerného opotrebenia pneumatík a predovšetkým v istote, že sa vaše auto na ceste správa presne tak, ako má.
+                </p>
             </div>
-        </section>
-        
-        <section class="py-20 bg-gray-50">
-            <div class="container mx-auto px-4">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-gray-800">Kedy si dať skontrolovať geometriu?</h2>
-                    <p class="text-lg text-gray-600 mt-2">Ak spozorujete niektorý z týchto príznakov, je čas na kontrolu.</p>
-                </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white p-8 rounded-lg shadow-md flex items-start space-x-4"><div class="flex-shrink-0"><div class="flex items-center justify-center h-12 w-12 rounded-full bg-red-100 text-red-600"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 17.5a2.5 2.5 0 0 1-4.1-1.67L16 12l1.4-3.83a2.5 2.5 0 1 1 4.1 1.66V17.5zM2.5 17.5a2.5 2.5 0 0 0 4.1-1.67L8 12l-1.4-3.83a2.5 2.5 0 1 0-4.1 1.66V17.5z"/></svg></div></div><div><h3 class="text-xl font-semibold text-gray-800">Nerovnomerné opotrebenie</h3><p class="mt-1 text-gray-600">Vnútorné alebo vonkajšie okraje pneumatík sa opotrebúvajú rýchlejšie.</p></div></div>
-                    <div class="bg-white p-8 rounded-lg shadow-md flex items-start space-x-4"><div class="flex-shrink-0"><div class="flex items-center justify-center h-12 w-12 rounded-full bg-red-100 text-red-600"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></div></div><div><h3 class="text-xl font-semibold text-gray-800">Volant je nakrivo</h3><p class="mt-1 text-gray-600">Pri jazde rovno nie je volant v dokonale vodorovnej polohe.</p></div></div>
-                    <div class="bg-white p-8 rounded-lg shadow-md flex items-start space-x-4"><div class="flex-shrink-0"><div class="flex items-center justify-center h-12 w-12 rounded-full bg-red-100 text-red-600"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.1,6.9,14,3.8,3.8,14l3.1,3.1Z"/><path d="M12,12,6.9,6.9"/><path d="m14,3.8-2.3,2.3"/><path d="m3.8,14 2.3,2.3"/><path d="M21.2,12.8,18,16l-3.1-3.1L18,9.8Z"/><path d="m16,18 3.1-3.1"/><path d="M18,9.8l2.3-2.3"/><path d="M9.8,18l2.3-2.3"/></svg></div></div><div><h3 class="text-xl font-semibold text-gray-800">Vozidlo "ťahá" do strany</h3><p class="mt-1 text-gray-600">Musíte neustále korigovať smer jazdy jemným otáčaním volantu.</p></div></div>
-                    <div class="bg-white p-8 rounded-lg shadow-md flex items-start space-x-4"><div class="flex-shrink-0"><div class="flex items-center justify-center h-12 w-12 rounded-full bg-red-100 text-red-600"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></div></div><div><h3 class="text-xl font-semibold text-gray-800">Po výmene dielov</h3><p class="mt-1 text-gray-600">Vždy po výmene pneumatík, tlmičov, čapov alebo iných častí podvozku.</p></div></div>
-                    <div class="bg-white p-8 rounded-lg shadow-md flex items-start space-x-4"><div class="flex-shrink-0"><div class="flex items-center justify-center h-12 w-12 rounded-full bg-red-100 text-red-600"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.68 13.31a1 1 0 0 1-1.42-1.41l3.54-3.54a1 1 0 0 1 1.42 0l3.53 3.53a1 1 0 0 1 0 1.42l-3.53 3.53a1 1 0 0 1-1.42 0z"/><path d="M4 20h.01"/><path d="M7 17h.01"/><path d="M17 7h.01"/><path d="M20 4h.01"/></svg></div></div><div><h3 class="text-xl font-semibold text-gray-800">Po náraze</h3><p class="mt-1 text-gray-600">Ak ste prudko narazili na obrubník alebo prešli cez veľký výtlk na ceste.</p></div></div>
-                    <div class="bg-white p-8 rounded-lg shadow-md flex items-start space-x-4"><div class="flex-shrink-0"><div class="flex items-center justify-center h-12 w-12 rounded-full bg-red-100 text-red-600"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg></div></div><div><h3 class="text-xl font-semibold text-gray-800">Nová sada pneumatík</h3><p class="mt-1 text-gray-600">Chráňte svoju investíciu do nových pneumatík správnym nastavením geometrie.</p></div></div>
-                </div>
+            <div class="relative" data-aos="fade-left">
+                <div class="absolute -top-4 -right-4 w-24 h-24 bg-slate-100 rounded-full z-0"></div>
+                <img src="geometria1.webp" alt="Detail laserového senzora" class="relative z-10 rounded-2xl shadow-2xl w-full object-cover h-[400px]">
             </div>
-        </section>
-        
-        <section class="py-20 bg-white">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Galéria našej geometrie</h2>
-                <div class="swiper gallery-swiper h-96 rounded-lg shadow-xl" style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="dielna1.webp" class="w-full h-full object-cover"/></div>
-                        <div class="swiper-slide"><img src="dielna2.webp" class="w-full h-full object-cover"/></div>
-                        <div class="swiper-slide"><img src="dielna3.webp" class="w-full h-full object-cover"/></div>
-                        <div class="swiper-slide"><img src="dielna4.webp" class="w-full h-full object-cover"/></div>
-                        <div class="swiper-slide"><img src="dielna5.webp" class="w-full h-full object-cover"/></div>
-                        <div class="swiper-slide"><img src="dielna6.webp" class="w-full h-full object-cover"/></div>
+        </div>
+    </div>
+</section>
+
+<section class="py-24 bg-slate-50">
+    <div class="container mx-auto px-4 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <span class="text-brand-red font-bold uppercase tracking-wider text-sm">Diagnostika problému</span>
+            <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mt-2">Kedy si dať skontrolovať geometriu?</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="service-card group" data-aos="fade-up">
+                <div class="icon-box">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21.5 17.5a2.5 2.5 0 0 1-4.1-1.67L16 12l1.4-3.83a2.5 2.5 0 1 1 4.1 1.66V17.5zM2.5 17.5a2.5 2.5 0 0 0 4.1-1.67L8 12l-1.4-3.83a2.5 2.5 0 1 0-4.1 1.66V17.5z"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">Nerovnomerné opotrebenie</h3>
+                <p class="text-slate-600">Vnútorné alebo vonkajšie okraje pneumatík sa opotrebúvajú rýchlejšie.</p>
+            </div>
+
+            <div class="service-card group" data-aos="fade-up" data-aos-delay="100">
+                <div class="icon-box">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">Volant je nakrivo</h3>
+                <p class="text-slate-600">Pri jazde rovno nie je volant v dokonale vodorovnej polohe.</p>
+            </div>
+
+            <div class="service-card group" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-box">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.1,6.9,14,3.8,3.8,14l3.1,3.1Z"/><path d="M12,12,6.9,6.9"/><path d="m14,3.8-2.3,2.3"/><path d="m3.8,14 2.3,2.3"/><path d="M21.2,12.8,18,16l-3.1-3.1L18,9.8Z"/><path d="m16,18 3.1-3.1"/><path d="M18,9.8l2.3-2.3"/><path d="M9.8,18l2.3-2.3"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">Vozidlo "ťahá" do strany</h3>
+                <p class="text-slate-600">Musíte neustále korigovať smer jazdy jemným otáčaním volantu.</p>
+            </div>
+
+            <div class="service-card group" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon-box">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">Po výmene dielov</h3>
+                <p class="text-slate-600">Vždy po výmene pneumatík, tlmičov, čapov alebo iných častí podvozku.</p>
+            </div>
+
+            <div class="service-card group" data-aos="fade-up" data-aos-delay="400">
+                <div class="icon-box">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10.68 13.31a1 1 0 0 1-1.42-1.41l3.54-3.54a1 1 0 0 1 1.42 0l3.53 3.53a1 1 0 0 1 0 1.42l-3.53 3.53a1 1 0 0 1-1.42 0z"/><path d="M4 20h.01"/><path d="M7 17h.01"/><path d="M17 7h.01"/><path d="M20 4h.01"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">Po náraze</h3>
+                <p class="text-slate-600">Ak ste prudko narazili na obrubník alebo prešli cez veľký výtlk na ceste.</p>
+            </div>
+
+            <div class="service-card group" data-aos="fade-up" data-aos-delay="500">
+                <div class="icon-box">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">Nová sada pneumatík</h3>
+                <p class="text-slate-600">Chráňte svoju investíciu do nových pneumatík správnym nastavením geometrie.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-24 bg-white">
+    <div class="container mx-auto px-4 lg:px-8">
+        <h2 class="text-3xl font-extrabold text-center mb-12 text-slate-900">Galéria našej geometrie</h2>
+        <div class="swiper" id="geometry-gallery" style="height: 500px; border-radius: 1.5rem; overflow: hidden; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><a href="dielna1.webp" class="glightbox"><img src="dielna1.webp" class="w-full h-full object-cover"/></a></div>
+                <div class="swiper-slide"><a href="dielna2.webp" class="glightbox"><img src="dielna2.webp" class="w-full h-full object-cover"/></a></div>
+                <div class="swiper-slide"><a href="dielna3.webp" class="glightbox"><img src="dielna3.webp" class="w-full h-full object-cover"/></a></div>
+                <div class="swiper-slide"><a href="dielna4.webp" class="glightbox"><img src="dielna4.webp" class="w-full h-full object-cover"/></a></div>
+                <div class="swiper-slide"><a href="dielna5.webp" class="glightbox"><img src="dielna5.webp" class="w-full h-full object-cover"/></a></div>
+                <div class="swiper-slide"><a href="dielna6.webp" class="glightbox"><img src="dielna6.webp" class="w-full h-full object-cover"/></a></div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</section>
+
+<section class="py-20 bg-slate-900 text-white relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-red-600/10 rounded-full blur-3xl -mr-20 -mt-20"></div>
+    <div class="absolute bottom-0 left-0 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl -ml-10 -mb-10"></div>
+
+    <div class="container mx-auto px-4 text-center relative z-10">
+        <h2 class="text-3xl md:text-5xl font-extrabold mb-6">Nejazdite "bokom"</h2>
+        <p class="text-lg text-slate-300 mb-10 max-w-2xl mx-auto">
+            Objednajte sa na presnú 3D geometriu a ušetrite na pneumatikách aj palive.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <button class="open-modal-btn bg-gradient-to-r from-red-600 to-red-700 text-white font-bold py-4 px-10 rounded-full hover:shadow-lg hover:shadow-red-900/50 transition transform hover:-translate-y-1">
+                Objednať geometriu
+            </button>
+            <a href="tel:+421905154247" class="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold py-4 px-10 rounded-full hover:bg-white hover:text-black transition">
+                Zavolať nám
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer id="contact" class="bg-slate-900 text-slate-300 py-16 border-t border-slate-800">
+    <div class="container mx-auto px-4 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12">
+            <div class="bg-slate-800 p-8 rounded-2xl" data-aos="fade-up">
+                <h2 class="text-2xl font-bold text-white mb-6">Napíšte nám</h2>
+                <form action="https://formspree.io/f/mqalzkbl" method="POST" class="space-y-4">
+                    <input type="text" name="name" placeholder="Meno" class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg focus:ring-1 focus:ring-brand-red text-white" required>
+                    <input type="email" name="email" placeholder="Email" class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg focus:ring-1 focus:ring-brand-red text-white" required>
+                    <input type="tel" name="telefon" placeholder="Telefón" class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg focus:ring-1 focus:ring-brand-red text-white">
+                    <textarea name="message" rows="3" placeholder="Správa" class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg focus:ring-1 focus:ring-brand-red text-white" required></textarea>
+                    <button type="submit" class="w-full py-3 bg-brand-red text-white font-bold rounded-lg hover:bg-red-700 transition">Odoslať správu</button>
+                </form>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="100">
+                <h2 class="text-2xl font-bold text-white mb-8">Kde nás nájdete?</h2>
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="text-brand-red"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></div>
+                        <div>
+                            <p class="text-white font-semibold">Adresa Servisu</p>
+                            <p class="text-slate-400">Železničná 173/2, 044 14 Čaňa</p>
+                            <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2637.9882796694296!2d21.308407976766794!3d48.610067618149344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473f21b8215a8135%3A0x1ecbb5781061afde!2sCarbox!5e0!3m2!1ssk!2ssk!4v1754680660056!5m2!1ssk!2ssk" target="_blank" class="text-sm text-brand-red mt-1 inline-block hover:underline">Spustiť navigáciu →</a>
+                        </div>
                     </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
+                    <div class="flex items-start gap-4">
+                        <div class="text-brand-red"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg></div>
+                        <div>
+                            <p class="text-white font-semibold">Telefón</p>
+                            <p class="text-slate-400">+421 905 154 247</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 rounded-lg overflow-hidden border border-slate-700 h-48">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2637.9882796694296!2d21.308407976766794!3d48.610067618149344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473f21b8215a8135%3A0x1ecbb5781061afde!2sCarbox!5e0!3m2!1ssk!2ssk!4v1754680660056!5m2!1ssk!2ssk" width="100%" height="100%" style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
-        </section>
+        </div>
+        <div class="border-t border-slate-800 mt-12 pt-8 text-center text-sm text-slate-500">
+            <p>
+                © 2025 CarBox. Všetky práva vyhradené. Vytvoril: 
+                <a href="http://www.unoneto.eu" target="_blank" class="hover:text-white transition-colors underline decoration-slate-600 hover:decoration-white">Unoneto.eu</a>
+            </p>
+        </div>
+    </div>
+</footer>
 
-        <section class="bg-red-600 text-white">
-            <div class="container mx-auto px-4 py-16 text-center">
-                <h2 class="text-3xl font-bold mb-4">Rezervujte si termín</h2>
-                <p class="text-lg mb-8 max-w-2xl mx-auto">Zarezervujte si termín vopred, aby ste nečakali. Budeme Vás ˇ</p>
-                <a href="https://www.rezervujsi.sk/carbox" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-semibold h-14 px-10 py-2 bg-white text-red-600 hover:bg-gray-100">Objednať sa teraz</a>
-            </div>
-        </section>
-    </main>
+<div id="booking-modal" class="modal-overlay">
+    <div class="modal-content">
+        <button class="absolute top-4 right-4 text-slate-400 hover:text-slate-800 text-2xl modal-close-button">×</button>
+        <h2 class="text-2xl font-bold mb-2 text-slate-900">Rýchla objednávka</h2>
+        <p class="text-slate-500 mb-6 text-sm">Vyplňte formulár a my sa vám ozveme.</p>
+        <form action="https://formspree.io/f/mqalzkbl" method="POST" class="space-y-4">
+            <input type="email" name="email" required placeholder="Váš email" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-red outline-none">
+            <input type="tel" name="telefon" placeholder="Telefón" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-red outline-none">
+            <textarea name="message" required rows="3" placeholder="Typ auta a problém s geometriou" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-red outline-none"></textarea>
+            <button type="submit" class="w-full py-3 bg-brand-red text-white font-bold rounded-xl hover:bg-red-700 transition">Odoslať</button>
+        </form>
+    </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="script.js" defer></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+<script>
+    AOS.init({ once: true, offset: 50, duration: 800 });
+
+    const menuBtn = document.getElementById('mobile-menu-button');
+    const closeMenuBtn = document.getElementById('close-mobile-menu');
+    const menu = document.getElementById('mobile-menu');
+    const toggleMenu = () => { menu.classList.toggle('menu-open'); document.body.style.overflow = menu.classList.contains('menu-open') ? 'hidden' : ''; };
+    if(menuBtn) menuBtn.addEventListener('click', toggleMenu);
+    if(closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
+
+    const modal = document.getElementById('booking-modal');
+    const modalBtns = document.querySelectorAll('.open-modal-btn');
+    const closeModalBtn = document.querySelector('.modal-close-button');
+    modalBtns.forEach(btn => btn.addEventListener('click', () => modal.classList.add('modal-visible')));
+    if(closeModalBtn) closeModalBtn.addEventListener('click', () => modal.classList.remove('modal-visible'));
+    window.addEventListener('click', (e) => { if (e.target == modal) modal.classList.remove('modal-visible'); });
+
+    // UNIKÁTNA INICIALIZÁCIA PRE GEOMETRIA GALÉRIU
+    new Swiper('#geometry-gallery', {
+        loop: true,
+        spaceBetween: 20,
+        autoplay: { delay: 3000 },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        breakpoints: {
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 }
+        }
+    });
+
+    GLightbox({ selector: '.glightbox' });
+</script>
+
 </body>
 </html>
