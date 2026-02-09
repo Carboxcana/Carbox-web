@@ -36,10 +36,23 @@
                         'glow': '0 0 20px rgba(220, 38, 38, 0.15)',
                         'card': '0 10px 30px -10px rgba(0,0,0,0.08)',
                         'card-hover': '0 20px 40px -5px rgba(220, 38, 38, 0.15)',
-                        'nav': '0 4px 20px -2px rgba(0, 0, 0, 0.05)'
+                        'nav': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'neon': '0 0 10px rgba(250, 204, 21, 0.5)' // Žltá žiara pre zľavu
                     },
                     animation: {
                         'bounce-slow': 'bounce 2s infinite',
+                        'heartbeat': 'heartbeat 1.5s ease-in-out infinite', // Nová animácia
+                        'shimmer': 'shimmer 2s linear infinite',
+                    },
+                    keyframes: {
+                        heartbeat: {
+                            '0%, 100%': { transform: 'scale(1)' },
+                            '50%': { transform: 'scale(1.1)', color: '#FACC15' }, // Zväčšenie a zjasnenie žltej
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' }
+                        }
                     }
                 }
             }
@@ -60,7 +73,7 @@
             @apply bg-white rounded-2xl border border-slate-100 shadow-card transition-all duration-300 relative overflow-hidden h-full flex flex-col;
         }
         
-        /* Hover Effects - Výraznejšie */
+        /* Hover Effects */
         .glass-card:hover {
             @apply shadow-card-hover -translate-y-2 border-red-200;
         }
@@ -107,6 +120,14 @@
 
         /* Swiper Custom */
         .swiper-button-next, .swiper-button-prev { color: white !important; transform: scale(0.7); font-weight: bold; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        
+        /* Promo Banner Gradient */
+        .promo-gradient {
+            background: linear-gradient(90deg, #0F172A 0%, #450a0a 50%, #0F172A 100%);
+            background-size: 200% 100%;
+            animation: moveGradient 10s ease infinite;
+        }
+        @keyframes moveGradient { 0% {background-position: 0% 50%} 50% {background-position: 100% 50%} 100% {background-position: 0% 50%} }
     </style>
 
     <script type="text/javascript">
@@ -200,14 +221,17 @@
     </div>
 </div>
 
-<div class="bg-slate-900 text-white py-2 relative z-50">
+<div class="promo-gradient text-white py-3 relative z-50 shadow-md">
     <div class="container mx-auto px-4 flex flex-wrap justify-center items-center gap-3 text-center">
-        <p class="text-xs sm:text-sm font-medium">
-            <span class="bg-brand-red px-2 py-0.5 rounded text-[10px] uppercase tracking-wider font-bold mr-2">Akcia</span>
-            Zľava <span class="font-bold text-yellow-400">20 % na 3D geometriu</span> pri online rezervácii
-        </p>
-        <a href="https://www.rezervujsi.sk/carbox" target="_blank" class="text-[10px] sm:text-xs bg-white text-brand-red px-3 py-1 rounded-full font-bold hover:bg-gray-100 transition shadow-sm">
-            Využiť teraz →
+        <div class="flex items-center gap-2">
+            <span class="bg-red-600 px-2 py-0.5 rounded text-[10px] uppercase tracking-wider font-bold shadow-sm animate-pulse">Akcia</span>
+            <p class="text-xs sm:text-sm font-medium">
+                <span class="font-extrabold text-yellow-400 inline-block animate-heartbeat text-base">Zľava 20 %</span> 
+                <span class="opacity-90">na 3D geometriu pri online rezervácii</span>
+            </p>
+        </div>
+        <a href="https://www.rezervujsi.sk/carbox" target="_blank" class="group relative text-[10px] sm:text-xs bg-white text-brand-red px-4 py-1.5 rounded-full font-bold hover:bg-gray-100 transition shadow-neon overflow-hidden">
+            <span class="relative z-10 flex items-center gap-1">Využiť teraz <span class="group-hover:translate-x-1 transition-transform">→</span></span>
         </a>
     </div>
 </div>
@@ -428,7 +452,7 @@
                 </div>
                 
                 <div class="mt-8 rounded-lg overflow-hidden border border-slate-700 h-64">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2637.9882796694296!2d21.308407976766794!3d48.610067618149344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473f21b8215a8135%3A0x1ecbb5781061afde!2sCarbox!5e0!3m2!1ssk!2ssk!4v1754680660056!5m2!1ssk!2ssk" 
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2633.9142823652875!2d21.3283!3d48.6056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473ed7a0b3e0c0f5%3A0x1c3a6e6e2e2e2e2e!2zxb1lbGV6bmnEjW7DoSAxNzMvMiwgMDQ0IDE0IMSMYcWIYQ!5e0!3m2!1ssk!2ssk!4v1600000000000!5m2!1ssk!2ssk" 
                             width="100%" height="100%" style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
