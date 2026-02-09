@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profesionálny Autoservis | CarBox Čaňa</title>
+    <title>Profesionálny Autoservis Čaňa | CarBox</title>
     <meta name="description" content="Kvalitný autoservis v Čani. Diagnostika, opravy motorov, bŕzd, podvozkov a príprava na STK. Profesionálny prístup a moderné vybavenie.">
     <link rel="icon" type="image/png" href="/favicon.png">
     
@@ -48,7 +48,7 @@
 
         /* Cards */
         .service-card { @apply bg-white border border-slate-100 rounded-2xl p-8 shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2 hover:border-red-100 relative overflow-hidden h-full flex flex-col; }
-        .icon-box { @apply w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center text-slate-700 mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors duration-300; }
+        .icon-box { @apply w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center text-brand-red mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors duration-300; }
 
         /* Mobile Menu */
         .mobile-menu { @apply fixed inset-0 bg-white z-[90] flex flex-col pt-24 px-6 gap-6 transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto pb-10; }
@@ -87,12 +87,12 @@
 
             <div class="hidden lg:flex items-center gap-6">
                 <div class="relative group h-full flex items-center">
-                    <button class="nav-link">
+                    <button class="nav-link text-brand-red">
                         Služby
                         <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="dropdown-menu">
-                        <a href="/autoservis" class="dropdown-item">Autoservis</a>
+                        <a href="/autoservis" class="dropdown-item bg-red-50 text-brand-red">Autoservis</a>
                         <a href="/pneuservis" class="dropdown-item">Pneuservis</a>
                         <a href="/geometria" class="dropdown-item">3D Geometria</a>
                         <a href="/lakovna" class="dropdown-item">Lakovňa</a>
@@ -242,14 +242,14 @@
 <section class="py-24 bg-white">
     <div class="container mx-auto px-4 lg:px-8">
         <h2 class="text-3xl font-extrabold text-center mb-12 text-slate-900">Galéria nášho servisu</h2>
-        <div class="swiper gallery-swiper h-[500px] rounded-3xl shadow-2xl overflow-hidden" data-aos="fade-up">
+        <div class="swiper" id="autoservis-gallery" style="height: 500px; border-radius: 1.5rem; overflow: hidden; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="dielna1.webp" class="w-full h-full object-cover"/></div>
-                <div class="swiper-slide"><img src="dielna2.webp" class="w-full h-full object-cover"/></div>
-                <div class="swiper-slide"><img src="dielna3.webp" class="w-full h-full object-cover"/></div>
-                <div class="swiper-slide"><img src="dielna4.webp" class="w-full h-full object-cover"/></div>
-                <div class="swiper-slide"><img src="dielna5.webp" class="w-full h-full object-cover"/></div>
-                <div class="swiper-slide"><img src="dielna6.webp" class="w-full h-full object-cover"/></div>
+                <div class="swiper-slide"><a href="dielna1.webp" class="glightbox"><img src="dielna1.webp" class="w-full h-full object-cover"/></a></div>
+                <div class="swiper-slide"><a href="dielna2.webp" class="glightbox"><img src="dielna2.webp" class="w-full h-full object-cover"/></a></div>
+                <div class="swiper-slide"><a href="dielna3.webp" class="glightbox"><img src="dielna3.webp" class="w-full h-full object-cover"/></a></div>
+                <div class="swiper-slide"><a href="dielna4.webp" class="glightbox"><img src="dielna4.webp" class="w-full h-full object-cover"/></a></div>
+                <div class="swiper-slide"><a href="dielna5.webp" class="glightbox"><img src="dielna5.webp" class="w-full h-full object-cover"/></a></div>
+                <div class="swiper-slide"><a href="dielna6.webp" class="glightbox"><img src="dielna6.webp" class="w-full h-full object-cover"/></a></div>
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -299,7 +299,7 @@
                         <div>
                             <p class="text-white font-semibold">Adresa Servisu</p>
                             <p class="text-slate-400">Železničná 173/2, 044 14 Čaňa</p>
-                            <a href="https://maps.google.com/?q=CarBox+Čaňa" target="_blank" class="text-sm text-brand-red mt-1 inline-block hover:underline">Spustiť navigáciu →</a>
+                            <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2637.9882796694296!2d21.308407976766794!3d48.610067618149344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473f21b8215a8135%3A0x1ecbb5781061afde!2sCarbox!5e0!3m2!1ssk!2ssk!4v1754680660056!5m2!1ssk!2ssk" target="_blank" class="text-sm text-brand-red mt-1 inline-block hover:underline">Spustiť navigáciu →</a>
                         </div>
                     </div>
                     <div class="flex items-start gap-4">
@@ -339,33 +339,28 @@
 </div>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
 <script>
     AOS.init({ once: true, offset: 50, duration: 800 });
 
-    // Mobile Menu
     const menuBtn = document.getElementById('mobile-menu-button');
     const closeMenuBtn = document.getElementById('close-mobile-menu');
     const menu = document.getElementById('mobile-menu');
-
-    function toggleMenu() {
-        menu.classList.toggle('menu-open');
-        document.body.style.overflow = menu.classList.contains('menu-open') ? 'hidden' : '';
-    }
-
+    const toggleMenu = () => { menu.classList.toggle('menu-open'); document.body.style.overflow = menu.classList.contains('menu-open') ? 'hidden' : ''; };
     if(menuBtn) menuBtn.addEventListener('click', toggleMenu);
     if(closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
 
-    // Modal
     const modal = document.getElementById('booking-modal');
     const modalBtns = document.querySelectorAll('.open-modal-btn');
     const closeModalBtn = document.querySelector('.modal-close-button');
-
     modalBtns.forEach(btn => btn.addEventListener('click', () => modal.classList.add('modal-visible')));
     if(closeModalBtn) closeModalBtn.addEventListener('click', () => modal.classList.remove('modal-visible'));
     window.addEventListener('click', (e) => { if (e.target == modal) modal.classList.remove('modal-visible'); });
 
-    // Gallery Swiper
-    new Swiper('.gallery-swiper', {
+    // UNIKÁTNA INICIALIZÁCIA PRE AUTOSERVIS GALÉRIU
+    new Swiper('#autoservis-gallery', {
         loop: true,
         spaceBetween: 20,
         autoplay: { delay: 3000 },
@@ -375,6 +370,8 @@
             1024: { slidesPerView: 3 }
         }
     });
+
+    GLightbox({ selector: '.glightbox' });
 </script>
 
 </body>
