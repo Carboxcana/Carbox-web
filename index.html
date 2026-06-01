@@ -6,17 +6,66 @@
     <title>Autoservis a Pneuservis Čaňa | CarBox</title>
     <meta name="description" content="Spoľahlivý autoservis a pneuservis CarBox v Čani. Ponúkame komplexné služby: 3D geometriu, lakovňu, diagnostiku a profesionálne opravy všetkých značiek.">
     <link rel="icon" type="image/png" href="/favicon.png">
-    
+    <link rel="canonical" href="https://carbox.top/">
+
+    <!-- Open Graph / sociálne siete -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="sk_SK">
+    <meta property="og:site_name" content="CarBox">
+    <meta property="og:title" content="Autoservis a Pneuservis Čaňa | CarBox">
+    <meta property="og:description" content="Spoľahlivý autoservis a pneuservis CarBox v Čani. Ponúkame komplexné služby: 3D geometriu, lakovňu, diagnostiku a profesionálne opravy všetkých značiek.">
+    <meta property="og:url" content="https://carbox.top/">
+    <meta property="og:image" content="https://carbox.top/baner1.webp">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Autoservis a Pneuservis Čaňa | CarBox">
+    <meta name="twitter:description" content="Spoľahlivý autoservis a pneuservis CarBox v Čani. Ponúkame komplexné služby: 3D geometriu, lakovňu, diagnostiku a profesionálne opravy všetkých značiek.">
+    <meta name="twitter:image" content="https://carbox.top/baner1.webp">
+
+    <!-- Structured data pre lokálne vyhľadávanie / Google Maps -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoRepair",
+      "name": "CarBox",
+      "image": "https://carbox.top/carbox_logo_t.png",
+      "url": "https://carbox.top/",
+      "telephone": "+421905154247",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Železničná 173/2",
+        "postalCode": "044 14",
+        "addressLocality": "Čaňa",
+        "addressCountry": "SK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 48.610067618149344,
+        "longitude": 21.308407976766794
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "16:00"
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
+    <!-- Preload hlavného hero obrázka (LCP) -->
+    <link rel="preload" as="image" href="baner1.webp">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <script>
         tailwind.config = {
             theme: {
@@ -62,53 +111,53 @@
     <style type="text/tailwindcss">
         /* Custom Styles & Utilities */
         body { @apply text-slate-800 bg-slate-50 antialiased overflow-x-hidden; }
-        
+
         /* Glassmorphism Navbar */
         .glass-nav {
             @apply sticky top-0 z-[100] bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300;
         }
-        
+
         /* Cards Enhancement */
         .glass-card {
             @apply bg-white rounded-2xl border border-slate-100 shadow-card transition-all duration-300 relative overflow-hidden h-full flex flex-col;
         }
-        
+
         /* Hover Effects */
         .glass-card:hover {
             @apply shadow-card-hover -translate-y-2 border-red-200;
         }
-        
+
         /* Nav Link Hover */
         .nav-link {
             @apply relative px-3 py-2 text-sm font-bold text-slate-600 transition-colors hover:text-brand-red cursor-pointer flex items-center gap-1;
         }
-        
+
         /* Dropdown Menu Styles */
         .dropdown-menu {
             @apply absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-slate-100 p-2 opacity-0 invisible transform -translate-y-2 transition-all duration-200 origin-top-left z-50;
         }
-        
+
         .group:hover .dropdown-menu {
             @apply opacity-100 visible translate-y-0;
         }
-        
+
         .dropdown-item {
             @apply flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-700 rounded-lg hover:bg-red-50 hover:text-brand-red transition-colors;
         }
 
         /* Mobile Menu */
-        .mobile-menu { 
+        .mobile-menu {
             @apply fixed inset-0 bg-white z-[90] flex flex-col pt-24 px-6 gap-6 transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto pb-10;
         }
-        .mobile-menu.menu-open { 
+        .mobile-menu.menu-open {
             @apply translate-x-0;
         }
 
         /* Klima Popup */
-        .klima-popup { 
+        .klima-popup {
             @apply hidden fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm justify-center items-center p-4;
         }
-        .klima-popup.show { 
+        .klima-popup.show {
             @apply flex;
         }
         .klima-popup-content {
@@ -120,7 +169,7 @@
 
         /* Swiper Custom */
         .swiper-button-next, .swiper-button-prev { color: white !important; transform: scale(0.7); font-weight: bold; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-        
+
         /* Promo Banner Gradient */
         .promo-gradient {
             background: linear-gradient(90deg, #0F172A 0%, #450a0a 50%, #0F172A 100%);
@@ -152,13 +201,13 @@
             </a>
 
             <div class="hidden lg:flex items-center gap-6">
-                
+
                 <div class="relative group h-full flex items-center">
                     <button class="nav-link">
                         Služby
                         <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
-                    
+
                     <div class="dropdown-menu">
                         <a href="/autoservis" class="dropdown-item">
                             <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
@@ -182,14 +231,14 @@
                 <a class="nav-link" href="/blog">Rady a Tipy</a>
                 <a class="nav-link" href="/cennik">Cenník</a>
                 <a class="nav-link" href="#contact">Kontakt</a>
-                
-                <a href="https://www.rezervujsi.sk/carbox" target="_blank" 
+
+                <a href="https://www.rezervujsi.sk/carbox" target="_blank"
                    class="ml-4 inline-flex items-center justify-center rounded-full text-sm font-bold h-10 px-6 bg-brand-red text-white shadow-md hover:bg-red-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
                     Objednať sa online
                 </a>
             </div>
 
-            <button id="mobile-menu-button" class="lg:hidden p-2 text-slate-700 hover:text-brand-red transition bg-slate-100 rounded-lg">
+            <button id="mobile-menu-button" class="lg:hidden p-2 text-slate-700 hover:text-brand-red transition bg-slate-100 rounded-lg" aria-label="Otvoriť menu">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
         </div>
@@ -199,24 +248,24 @@
 <div id="mobile-menu" class="mobile-menu">
     <div class="flex justify-between items-center mb-6">
         <img src="/carbox_logo_t.png" alt="Logo" class="h-10 w-auto">
-        <button id="close-mobile-menu" class="p-2 bg-slate-100 rounded-full text-slate-500 hover:text-red-500">
+        <button id="close-mobile-menu" class="p-2 bg-slate-100 rounded-full text-slate-500 hover:text-red-500" aria-label="Zavrieť menu">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
     </div>
-    
+
     <div class="flex flex-col space-y-2">
         <p class="text-xs font-bold text-slate-400 uppercase tracking-widest px-2">Služby</p>
         <a href="/autoservis" class="text-lg font-bold text-slate-800 py-2 px-2 hover:bg-red-50 rounded-lg">Autoservis</a>
         <a href="/pneuservis" class="text-lg font-bold text-slate-800 py-2 px-2 hover:bg-red-50 rounded-lg">Pneuservis</a>
         <a href="/geometria" class="text-lg font-bold text-slate-800 py-2 px-2 hover:bg-red-50 rounded-lg">Geometria</a>
         <a href="/lakovna" class="text-lg font-bold text-slate-800 py-2 px-2 hover:bg-red-50 rounded-lg">Lakovňa</a>
-        
+
         <div class="h-px bg-slate-100 my-2"></div>
-        
+
         <a href="/cennik" class="text-lg font-bold text-slate-800 py-2 px-2 hover:bg-red-50 rounded-lg">Cenník</a>
         <a href="/blog" class="text-lg font-bold text-slate-800 py-2 px-2 hover:bg-red-50 rounded-lg">Rady a Tipy</a>
         <a href="#contact" class="text-lg font-bold text-brand-red py-2 px-2 hover:bg-red-50 rounded-lg">Kontakt</a>
-        
+
         <a href="https://www.rezervujsi.sk/carbox" class="mt-6 w-full py-3 bg-brand-red text-white text-lg font-bold rounded-xl text-center shadow-lg">Objednať sa online</a>
     </div>
 </div>
@@ -226,7 +275,7 @@
         <div class="flex items-center gap-2">
             <span class="bg-red-600 px-2 py-0.5 rounded text-[10px] uppercase tracking-wider font-bold shadow-sm animate-pulse">Akcia</span>
             <p class="text-xs sm:text-sm font-medium">
-                <span class="font-extrabold text-yellow-400 inline-block animate-heartbeat text-base">Výmena oleja a filtrov 130 €</span> 
+                <span class="font-extrabold text-yellow-400 inline-block animate-heartbeat text-base">Výmena oleja a filtrov 130 €</span>
                 <span class="opacity-90">kompletne vrátane oleja, filtra a práce</span>
             </p>
         </div>
@@ -242,7 +291,7 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide relative">
                     <div class="absolute inset-0 bg-black/40 z-10"></div>
-                    <img src="baner1.webp" alt="Autoservis" class="w-full h-full object-cover"/>
+                    <img src="baner1.webp" alt="Autoservis" fetchpriority="high" decoding="async" class="w-full h-full object-cover"/>
                     <div class="absolute inset-0 z-20 flex items-center justify-center text-center">
                         <div class="container px-4">
                             <span class="inline-block py-1 px-3 rounded-full bg-red-600/80 text-white text-xs font-bold uppercase tracking-widest mb-4">Premium Service</span>
@@ -259,7 +308,7 @@
                 </div>
                 <div class="swiper-slide relative">
                     <div class="absolute inset-0 bg-black/40 z-10"></div>
-                    <img src="baner2.webp" alt="Diagnostika" class="w-full h-full object-cover"/>
+                    <img src="baner2.webp" alt="Diagnostika" loading="lazy" decoding="async" class="w-full h-full object-cover"/>
                     <div class="absolute inset-0 z-20 flex items-center justify-center text-center">
                         <div class="container px-4">
                             <span class="inline-block py-1 px-3 rounded-full bg-blue-600/80 text-white text-xs font-bold uppercase tracking-widest mb-4">Technológie</span>
@@ -275,7 +324,7 @@
             <div class="swiper-button-next hidden md:flex"></div>
             <div class="swiper-button-prev hidden md:flex"></div>
         </div>
-        
+
         <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 text-white opacity-70 animate-bounce-slow hidden md:block">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
         </div>
@@ -289,7 +338,7 @@
                     <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2">Naše Služby</h2>
                 </div>
                 <a href="/cennik" class="hidden md:flex items-center text-slate-500 hover:text-brand-red font-semibold transition group mt-4 md:mt-0">
-                    Pozrieť cenník 
+                    Pozrieť cenník
                     <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                 </a>
             </div>
@@ -345,15 +394,15 @@
                 <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-4">Nahliadnite do našej dielne</h2>
                 <p class="text-lg text-slate-600">Používame moderné vybavenie a udržiavame čistotu, aby sme sa o vaše auto postarali čo najlepšie.</p>
             </div>
-            
+
             <div class="swiper workshop-swiper rounded-2xl shadow-xl overflow-hidden" data-aos="fade-up">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><a href="dielna1.webp" class="glightbox"><img src="dielna1.webp" class="w-full h-64 md:h-80 object-cover hover:scale-105 transition duration-700" alt="Dielna"></a></div>
-                    <div class="swiper-slide"><a href="dielna2.webp" class="glightbox"><img src="dielna2.webp" class="w-full h-64 md:h-80 object-cover hover:scale-105 transition duration-700" alt="Dielna"></a></div>
-                    <div class="swiper-slide"><a href="dielna3.webp" class="glightbox"><img src="dielna3.webp" class="w-full h-64 md:h-80 object-cover hover:scale-105 transition duration-700" alt="Dielna"></a></div>
-                    <div class="swiper-slide"><a href="dielna4.webp" class="glightbox"><img src="dielna4.webp" class="w-full h-64 md:h-80 object-cover hover:scale-105 transition duration-700" alt="Dielna"></a></div>
-                    <div class="swiper-slide"><a href="dielna5.webp" class="glightbox"><img src="dielna5.webp" class="w-full h-64 md:h-80 object-cover hover:scale-105 transition duration-700" alt="Dielna"></a></div>
-                    <div class="swiper-slide"><a href="dodavka1.jfif" class="glightbox"><img src="dodavka1.jfif" class="w-full h-64 md:h-80 object-cover hover:scale-105 transition duration-700" alt="Dielna"></a></div>
+                    <div class="swiper-slide"><a href="dielna1.webp" class="glightbox"><img src="dielna1.webp" loading="lazy" decoding="async" class="w-full h-64 md:h-80 object-cover hover:scale-105 transition duration-700" alt="Dielna"></a></div>
+                    <div class="swiper-slide"><a href="dielna2.webp" class="glightbox"><img src="dielna2.webp" loading="lazy" decoding="async" class="w-full h-64 md:h-80 object-cover hover:scale-105 transition duration-700" alt="Dielna"></a></div>
+                    <div class="swiper-slide"><a href="dielna3.webp" class="glightbox"><img src="dielna3.webp" loading="lazy" decoding="async" class="w-full h-64 md:h-80 object-cover hover:scale-105 transition duration-700" alt="Dielna"></a></div>
+                    <div class="swiper-slide"><a href="dielna4.webp" class="glightbox"><img src="dielna4.webp" loading="lazy" decoding="async" class="w-full h-64 md:h-80 object-cover hover:scale-105 transition duration-700" alt="Dielna"></a></div>
+                    <div class="swiper-slide"><a href="dielna5.webp" class="glightbox"><img src="dielna5.webp" loading="lazy" decoding="async" class="w-full h-64 md:h-80 object-cover hover:scale-105 transition duration-700" alt="Dielna"></a></div>
+                    <div class="swiper-slide"><a href="dodavka1.jfif" class="glightbox"><img src="dodavka1.jfif" loading="lazy" decoding="async" class="w-full h-64 md:h-80 object-cover hover:scale-105 transition duration-700" alt="Dielna"></a></div>
                 </div>
                 <div class="swiper-button-next hidden md:flex"></div>
                 <div class="swiper-button-prev hidden md:flex"></div>
@@ -390,7 +439,7 @@
         <div class="container mx-auto px-4 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="relative rounded-2xl overflow-hidden shadow-xl" data-aos="fade-right">
-                    <img src="/dielna1.webp" alt="Náš tím" class="w-full h-auto object-cover"/>
+                    <img src="/dielna1.webp" alt="Náš tím" loading="lazy" decoding="async" class="w-full h-auto object-cover"/>
                 </div>
                 <div data-aos="fade-left">
                     <span class="text-brand-red font-bold uppercase tracking-wider text-sm">Náš príbeh</span>
@@ -423,12 +472,13 @@
         <div class="grid lg:grid-cols-2 gap-12">
             <div class="bg-slate-800 p-8 rounded-2xl" data-aos="fade-up">
                 <h2 class="text-2xl font-bold text-white mb-6">Napíšte nám</h2>
-                <form action="https://formspree.io/f/mqalzkbl" method="POST" class="space-y-4">
-                    <input type="text" name="name" placeholder="Meno" class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg focus:ring-1 focus:ring-brand-red text-white" required>
-                    <input type="email" name="email" placeholder="Email" class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg focus:ring-1 focus:ring-brand-red text-white" required>
-                    <input type="tel" name="telefon" placeholder="Telefón" class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg focus:ring-1 focus:ring-brand-red text-white">
-                    <textarea name="message" rows="3" placeholder="Správa" class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg focus:ring-1 focus:ring-brand-red text-white" required></textarea>
+                <form id="contact-form" action="https://formspree.io/f/mqalzkbl" method="POST" class="space-y-4">
+                    <input type="text" name="name" aria-label="Meno" placeholder="Meno" class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg focus:ring-1 focus:ring-brand-red text-white" required>
+                    <input type="email" name="email" aria-label="Email" placeholder="Email" class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg focus:ring-1 focus:ring-brand-red text-white" required>
+                    <input type="tel" name="telefon" aria-label="Telefón" placeholder="Telefón" class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg focus:ring-1 focus:ring-brand-red text-white">
+                    <textarea name="message" rows="3" aria-label="Správa" placeholder="Správa" class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg focus:ring-1 focus:ring-brand-red text-white" required></textarea>
                     <button type="submit" class="w-full py-3 bg-brand-red text-white font-bold rounded-lg hover:bg-red-700 transition">Odoslať správu</button>
+                    <p id="form-status" class="text-sm text-center hidden" role="status" aria-live="polite"></p>
                 </form>
             </div>
 
@@ -447,20 +497,28 @@
                         <div class="text-brand-red"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg></div>
                         <div>
                             <p class="text-white font-semibold">Telefón</p>
-                            <p class="text-slate-400">+421 905 154 247</p>
+                            <p class="text-slate-400"><a href="tel:+421905154247" class="hover:text-white transition-colors">+421 905 154 247</a></p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="text-brand-red"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                        <div>
+                            <p class="text-white font-semibold">Otváracie hodiny</p>
+                            <p class="text-slate-400">Pondelok – Piatok: 8:00 – 16:00</p>
+                            <a href="https://www.rezervujsi.sk/carbox" target="_blank" class="text-sm text-brand-red mt-1 inline-block hover:underline">Odporúčame rezervovať termín online →</a>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="mt-8 rounded-lg overflow-hidden border border-slate-700 h-64">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2637.9882796694296!2d21.308407976766794!3d48.610067618149344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473f21b8215a8135%3A0x1ecbb5781061afde!2sCarbox!5e0!3m2!1ssk!2ssk!4v1754680660056!5m2!1ssk!2ssk" 
-                            width="100%" height="100%" style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2637.9882796694296!2d21.308407976766794!3d48.610067618149344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473f21b8215a8135%3A0x1ecbb5781061afde!2sCarbox!5e0!3m2!1ssk!2ssk!4v1754680660056!5m2!1ssk!2ssk"
+                            width="100%" height="100%" style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);" allowfullscreen="" loading="lazy" title="Mapa CarBox Čaňa"></iframe>
                 </div>
             </div>
         </div>
         <div class="border-t border-slate-800 mt-12 pt-8 text-center text-sm text-slate-500">
     <p>
-        © 2025 CarBox. Všetky práva vyhradené. Vytvoril: 
+        © 2025 CarBox. Všetky práva vyhradené. Vytvoril:
         <a href="http://www.unoneto.eu" target="_blank" class="hover:text-white transition-colors underline decoration-slate-600 hover:decoration-white">Unoneto.eu</a>
     </p>
 </div>
@@ -469,21 +527,28 @@
 
 <div id="klima-popup" class="klima-popup">
     <div class="klima-popup-content">
-        <button onclick="closeKlimaPopup()" class="absolute top-4 right-4 z-20 w-8 h-8 flex items-center justify-center bg-black/20 hover:bg-black/40 text-white rounded-full transition backdrop-blur-sm">×</button>
-        
+        <button onclick="closeKlimaPopup()" class="absolute top-4 right-4 z-20 w-8 h-8 flex items-center justify-center bg-black/20 hover:bg-black/40 text-white rounded-full transition backdrop-blur-sm" aria-label="Zavrieť">×</button>
+
         <div class="w-full md:w-1/2 h-48 md:h-auto relative flex-shrink-0">
-            <img src="oil.jpg" alt="Akcia Klimatizácia" class="absolute inset-0 w-full h-full object-cover">
+            <img src="oil.jpg" alt="Akcia Klimatizácia" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover">
         </div>
-        
+
         <div class="w-full md:w-1/2 klima-popup-body p-6 md:p-8">
-    <h2 class="text-2xl font-bold text-brand-red mb-2 uppercase">VÝMENA OLEJA A FILTROV</h2>
-    <p class="text-4xl font-black text-slate-900 mb-2">už od 130 €</p>
-    <p class="text-lg text-slate-600 mb-6">Kompletne vrátane oleja, filtra a práce.</p>
-    
-    <div class="bg-red-50 p-4 rounded-xl mb-6">
-        <p class="text-xs font-bold text-brand-red uppercase">Info</p>
-        <p class="text-slate-800 text-sm font-semibold">Cena sa môže líšiť podľa typu vozidla a oleja</p>
+            <h2 class="text-2xl font-bold text-brand-red mb-2 uppercase">VÝMENA OLEJA A FILTROV</h2>
+            <p class="text-4xl font-black text-slate-900 mb-2">už od 130 €</p>
+            <p class="text-lg text-slate-600 mb-6">Kompletne vrátane oleja, filtra a práce.</p>
+
+            <div class="bg-red-50 p-4 rounded-xl mb-6">
+                <p class="text-xs font-bold text-brand-red uppercase">Info</p>
+                <p class="text-slate-800 text-sm font-semibold">Cena sa môže líšiť podľa typu vozidla a oleja</p>
+            </div>
+
+            <a href="https://www.rezervujsi.sk/carbox" target="_blank" class="w-full inline-flex items-center justify-center py-3 bg-brand-red text-white font-bold rounded-xl text-center shadow-lg hover:bg-red-700 transition">
+                Rezervovať termín online
+            </a>
+        </div>
     </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
@@ -540,9 +605,39 @@
         popup.classList.remove('show');
         sessionStorage.setItem('popupShown_klima_v1', 'true');
     }
-    
+
     if (!sessionStorage.getItem('popupShown_klima_v1')) {
         setTimeout(() => popup.classList.add('show'), 2000);
+    }
+
+    // Kontaktný formulár – odoslanie cez AJAX + spätná väzba
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            formStatus.classList.remove('hidden');
+            formStatus.className = 'text-sm text-center text-slate-400';
+            formStatus.textContent = 'Odosielam…';
+            try {
+                const res = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (res.ok) {
+                    contactForm.reset();
+                    formStatus.className = 'text-sm text-center text-green-400';
+                    formStatus.textContent = 'Ďakujeme, správa bola odoslaná. Ozveme sa vám čo najskôr.';
+                } else {
+                    formStatus.className = 'text-sm text-center text-red-400';
+                    formStatus.textContent = 'Správu sa nepodarilo odoslať. Skúste to znova alebo nám zavolajte.';
+                }
+            } catch {
+                formStatus.className = 'text-sm text-center text-red-400';
+                formStatus.textContent = 'Správu sa nepodarilo odoslať. Skúste to znova alebo nám zavolajte.';
+            }
+        });
     }
 </script>
 
