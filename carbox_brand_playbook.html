@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CarBox — Brand &amp; Marketing Playbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --petrol:#0C4A5A; --petrol-deep:#082F3A; --red:#C0382B; --red-deep:#8E2A20;
+  --ink:#17150F; --paper:#ECEAE3; --paper-2:#F6F4EE; --steel:#5F6B6F;
+  --line:#D7D3C8; --black:#0A0A0B;
+  --sans:'Inter',system-ui,sans-serif; --disp:'Barlow Condensed',var(--sans); --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--red);z-index:60}
+.topbar{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:11px 22px;background:rgba(10,10,11,.92);backdrop-filter:blur(6px);border-bottom:1px solid #1c1c1e}
+.topbar .bw{font-family:var(--disp);font-weight:700;font-size:20px;letter-spacing:.5px;color:#fff;text-transform:uppercase}
+.topbar .bw span{color:var(--red)}
+.topbar .hint{font-family:var(--mono);font-size:11px;color:#9aa0a3;letter-spacing:.05em}
+.topbar a{color:inherit;text-decoration:none}
+.wrap{max-width:940px;margin:0 auto;padding:0 24px}
+
+/* sections */
+.sec{padding:78px 0;border-top:1px solid var(--line)}
+.sec.band{background:var(--petrol);color:#EAF2F3;border-top:none}
+.sec.dark{background:var(--black);color:#EDEDEA;border-top:none}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--red);display:inline-flex;align-items:center;gap:10px;margin:0 0 14px}
+.eyebrow::before{content:"";width:26px;height:3px;background:var(--red);display:inline-block}
+.band .eyebrow,.dark .eyebrow{color:#FF8A78}
+.band .eyebrow::before,.dark .eyebrow::before{background:#FF8A78}
+h1{font-family:var(--disp);font-weight:700;text-transform:uppercase;line-height:.94;letter-spacing:.5px;margin:0}
+h2{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(2rem,4.4vw,3.1rem);line-height:1;letter-spacing:.5px;margin:0 0 22px;color:var(--petrol)}
+.band h2,.dark h2{color:#fff}
+h3{font-family:var(--disp);font-weight:600;text-transform:uppercase;letter-spacing:.4px;font-size:1.3rem;margin:0 0 6px;color:var(--ink)}
+.band h3,.dark h3{color:#fff}
+p{margin:0 0 16px;max-width:64ch}
+strong{font-weight:600}
+.lead{font-size:1.15rem}
+.note{font-size:.95rem;color:var(--steel);border-left:3px solid var(--red);padding:4px 0 4px 16px;margin:0 0 26px;max-width:62ch}
+.band .note,.dark .note{color:#B9CDD0;border-color:#FF8A78}
+.fill{font-family:var(--mono);font-size:.85em;background:rgba(192,56,43,.12);color:var(--red-deep);padding:1px 7px;border-radius:3px;white-space:nowrap}
+.dark .fill,.band .fill{background:rgba(255,138,120,.16);color:#FFC2B6}
+.big{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(1.9rem,5vw,3.2rem);line-height:1.02;letter-spacing:.5px;margin:0 0 10px}
+
+/* cover */
+.cover{background:var(--black);color:#fff;padding:60px 0 64px}
+.cover .wrap{max-width:940px}
+.cover .kick{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:#9aa0a3;text-transform:uppercase}
+.cover .logo{margin:30px 0 26px}
+.cover .logo img{width:230px;max-width:62%;height:auto;display:block}
+.cover h1{font-size:clamp(3rem,9vw,6.2rem)}
+.cover h1 span{color:var(--red)}
+.cover .sub{font-family:var(--disp);font-weight:600;text-transform:uppercase;letter-spacing:.3em;font-size:clamp(.95rem,2.4vw,1.35rem);color:#cfd3d4;margin:8px 0 26px}
+.cover .tagline{font-size:1.18rem;max-width:50ch;color:#E7E7E4}
+.cover .svc{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:#FF8A78;margin-top:8px;text-transform:uppercase}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#1d1d1f;border:1px solid #1d1d1f;margin-top:40px}
+.stats div{background:var(--black);padding:18px 16px}
+.stats .n{font-family:var(--disp);font-weight:700;font-size:2rem;color:#fff;line-height:1}
+.stats .l{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:#9aa0a3;text-transform:uppercase;margin-top:6px}
+.coverfoot{font-family:var(--mono);font-size:11.5px;color:#9aa0a3;margin-top:30px;letter-spacing:.04em}
+.coverfoot a{color:#cfd3d4;text-decoration:none}
+
+/* legend */
+.legend{background:var(--paper-2);border:1px solid var(--line)}
+.legend ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.legend li{padding-left:22px;position:relative;font-size:.98rem}
+.legend li::before{content:"›";position:absolute;left:0;color:var(--red);font-weight:600}
+
+/* toc */
+.toc{display:grid;grid-template-columns:1fr 1fr;gap:34px 48px}
+.toc .grp h4{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--steel);margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.toc a{display:flex;gap:12px;align-items:baseline;text-decoration:none;color:var(--ink);padding:6px 0;border-bottom:1px dotted transparent}
+.toc a:hover{color:var(--red)}
+.toc a .num{font-family:var(--mono);font-size:12px;color:var(--red);min-width:24px}
+.toc a .t{font-family:var(--disp);text-transform:uppercase;letter-spacing:.4px;font-weight:600;font-size:1.05rem}
+
+/* tables */
+.tablewrap{overflow-x:auto;margin:0 0 8px;border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.96rem;background:var(--paper-2)}
+thead th{background:var(--petrol);color:#fff;font-family:var(--disp);text-transform:uppercase;letter-spacing:.4px;font-weight:600;text-align:left;padding:12px 16px;font-size:.95rem}
+tbody td{padding:13px 16px;border-top:1px solid var(--line);vertical-align:top}
+tbody td:first-child{font-weight:600;color:var(--petrol);white-space:nowrap}
+.band tbody td:first-child{color:var(--petrol)}
+
+/* generic grids */
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:var(--paper-2);border:1px solid var(--line);padding:20px 20px 18px}
+.band .card,.dark .card{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)}
+.card .pn{font-family:var(--mono);font-size:12px;color:var(--red);display:block;margin-bottom:8px}
+.card p{font-size:.95rem;margin:0;color:var(--ink)}
+.band .card p,.dark .card p{color:#D6E2E4}
+
+/* pillars numbered */
+.pill{counter-reset:none}
+.pill .pn{font-family:var(--disp);font-weight:700;font-size:1.8rem;color:var(--red);line-height:1}
+
+/* colors */
+.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.sw .chip{height:92px;border:1px solid var(--line)}
+.sw .meta{margin-top:8px}
+.sw .name{font-family:var(--disp);text-transform:uppercase;font-weight:600;letter-spacing:.3px;font-size:1rem}
+.sw .hex{font-family:var(--mono);font-size:12px;color:var(--steel)}
+.sw .use{font-size:.85rem;color:var(--steel);margin-top:3px}
+
+/* type specimens */
+.spec{background:var(--paper-2);border:1px solid var(--line);padding:22px 22px 18px;margin-bottom:14px}
+.spec .role{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+.spec .demoD{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(1.8rem,4.6vw,2.8rem);line-height:1;color:var(--petrol);letter-spacing:.5px}
+.spec .demoT{font-family:var(--sans);font-size:1.05rem;color:var(--ink);max-width:60ch}
+.spec .demoM{font-family:var(--mono);font-size:1rem;color:var(--ink);letter-spacing:.02em}
+
+/* do / dont */
+.dodont{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.dd{background:var(--paper-2);border:1px solid var(--line);padding:16px 18px}
+.dd .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:#fff;padding:3px 10px;display:inline-block;margin-bottom:10px}
+.dd.yes{border-left:4px solid var(--petrol)}
+.dd.yes .tag{background:var(--petrol)}
+.dd.no{border-left:4px solid var(--red)}
+.dd.no .tag{background:var(--red)}
+.dd p{margin:0;font-size:1.02rem;color:var(--ink)}
+
+/* claim block */
+.claimbox{background:var(--black);color:#fff;padding:40px 30px;text-align:center;border:1px solid #1d1d1f}
+.claimbox .m{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(2rem,6vw,3.6rem);line-height:1;letter-spacing:.5px}
+.claimbox .m span{color:var(--red)}
+.micro{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;justify-content:center}
+.micro span{font-family:var(--mono);font-size:12.5px;border:1px solid rgba(255,255,255,.25);padding:8px 14px;color:#E7E7E4}
+
+/* headline library */
+.heads .row{padding:16px 0;border-top:1px solid var(--line)}
+.heads .row:first-child{border-top:none}
+.heads .cat{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.heads .items{display:flex;flex-wrap:wrap;gap:8px}
+.heads .items span{background:var(--paper-2);border:1px solid var(--line);padding:7px 13px;font-family:var(--disp);text-transform:uppercase;letter-spacing:.3px;font-weight:600;font-size:.98rem}
+
+/* templates */
+.tpl{background:var(--paper-2);border:1px solid var(--line);border-left:4px solid var(--red);padding:18px 20px;margin-bottom:14px}
+.tpl .h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.tpl .h .name{font-family:var(--disp);text-transform:uppercase;letter-spacing:.4px;font-weight:700;font-size:1.15rem;color:var(--petrol)}
+.tpl .h .badge{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;background:var(--petrol);color:#fff;padding:3px 9px}
+.tpl pre{font-family:var(--sans);white-space:pre-wrap;font-size:1.02rem;line-height:1.6;margin:0;color:var(--ink)}
+.tpl .tip{font-size:.88rem;color:var(--steel);margin:12px 0 0;border-top:1px dotted var(--line);padding-top:10px}
+
+/* seasons */
+.seasons{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.season{background:var(--paper-2);border:1px solid var(--line);border-top:5px solid var(--petrol);padding:18px 18px 16px}
+.season:nth-child(2){border-top-color:var(--red)}
+.season:nth-child(3){border-top-color:var(--petrol)}
+.season:nth-child(4){border-top-color:var(--steel)}
+.season .s{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:1.35rem;color:var(--petrol);line-height:1}
+.season .when{font-family:var(--mono);font-size:11px;color:var(--red);letter-spacing:.08em;margin:4px 0 12px}
+.season p{font-size:.92rem;margin:0;color:var(--ink)}
+
+/* footer */
+footer{background:var(--black);color:#cfd3d4;padding:46px 0}
+footer .wrap{display:flex;flex-wrap:wrap;gap:18px 40px;justify-content:space-between;align-items:flex-end}
+footer .bw{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:1.8rem;letter-spacing:.5px;color:#fff}
+footer .bw span{color:var(--red)}
+footer .meta{font-family:var(--mono);font-size:11.5px;line-height:1.9;letter-spacing:.03em;color:#9aa0a3}
+footer .meta a{color:#cfd3d4;text-decoration:none}
+
+a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+
+/* reveal (progressive enhancement) */
+.js .sec .wrap{opacity:0;transform:translateY(14px)}
+.js .sec.in .wrap{opacity:1;transform:none;transition:opacity .6s ease,transform .6s ease}
+@media (prefers-reduced-motion:reduce){.js .sec .wrap{opacity:1!important;transform:none!important}}
+
+@media (max-width:680px){
+  body{font-size:16px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .toc{grid-template-columns:1fr;gap:26px}
+  .cover .logo img{max-width:78%}
+}
+@media print{
+  .topbar,.progress{display:none}
+  html,body{background:#fff}
+  .js .sec .wrap{opacity:1!important;transform:none!important}
+  .sec{padding:26px 0;break-inside:avoid;border-top:1px solid #ccc}
+  .cover,.sec.band,.sec.dark,.claimbox,footer{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  a{color:inherit}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="topbar">
+  <a href="#top" class="bw">Car<span>Box</span></a>
+  <span class="hint">Tlač / PDF: Ctrl/Cmd + P</span>
+</div>
+
+<!-- COVER -->
+<header class="cover" id="top">
+  <div class="wrap">
+    <div class="kick">Brand &amp; Marketing Playbook · v1.0 · Jún 2026</div>
+    <div class="logo"><img src="data:image/png;base64,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" alt="Logo CarBox"></div>
+    <h1>Car<span>Box</span></h1>
+    <div class="sub">Brand &amp; Marketing Playbook</div>
+    <p class="tagline">Ako má CarBox vyzerať, znieť a predávať — rovnako rozpoznateľne na webe, na sociálnych sieťach, v e-maile aj v servise.</p>
+    <div class="svc">Autoservis · Pneuservis · 3D geometria · Lakovňa — Čaňa, pri Košiciach</div>
+    <div class="stats">
+      <div><div class="n">4</div><div class="l">Služby pod strechou</div></div>
+      <div><div class="n">Po–Pi</div><div class="l">8:00 – 15:00</div></div>
+      <div><div class="n">Online</div><div class="l">Rezervácia 24/7</div></div>
+      <div><div class="n">10+</div><div class="l">Rokov skúseností</div></div>
+    </div>
+    <div class="coverfoot"><a href="https://carbox.top">carbox.top</a> · +421 905 154 247 · Železničná 173/2, Čaňa</div>
+  </div>
+</header>
+
+<!-- LEGEND -->
+<section class="sec legend">
+  <div class="wrap">
+    <div class="eyebrow">Ako čítať tento playbook</div>
+    <h2>Jeden zdroj pravdy</h2>
+    <p class="lead">Tento dokument nie je estetika pre estetiku. Je o tom, aby CarBox vždy znel a vyzeral rovnako — konzistentná značka buduje dôveru a predáva. Roztrieštená komunikácia mätie.</p>
+    <ul>
+      <li><strong>Bežný text = návrh</strong> na odsúhlasenie. Pokojne ho upravte podľa toho, ako reálne fungujete.</li>
+      <li><strong>Fakty</strong> (adresa, telefón, hodiny, služby, online rezervácia, rodinná firma) pochádzajú z vášho webu <a href="https://carbox.top" style="color:var(--red)">carbox.top</a>.</li>
+      <li><strong>Farby</strong> sú odčítané priamo z vášho loga — logo zostáva pôvodné, nemeníme ho.</li>
+      <li><span class="fill">[zvýraznené]</span> = miesto v šablónach (sekcia 13), ktoré doplníte pri konkrétnom poste — napr. názov služby.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TOC -->
+<section class="sec">
+  <div class="wrap">
+    <div class="eyebrow">Obsah</div>
+    <div class="toc">
+      <div class="grp">
+        <h4>Základ značky</h4>
+        <a href="#uvod"><span class="num">00</span><span class="t">Esencia</span></a>
+        <a href="#pozicia"><span class="num">01</span><span class="t">Pozícia značky</span></a>
+        <a href="#persona"><span class="num">02</span><span class="t">Zákazník</span></a>
+        <a href="#farby"><span class="num">03</span><span class="t">Farby</span></a>
+        <a href="#typografia"><span class="num">04</span><span class="t">Typografia</span></a>
+        <a href="#voice"><span class="num">05</span><span class="t">Voice &amp; tone</span></a>
+        <a href="#claim"><span class="num">06</span><span class="t">Claim</span></a>
+      </div>
+      <div class="grp">
+        <h4>Marketing playbook</h4>
+        <a href="#piliere"><span class="num">07</span><span class="t">Emočné piliere</span></a>
+        <a href="#dovody"><span class="num">08</span><span class="t">Dôvody zvoliť nás</span></a>
+        <a href="#nadpisy"><span class="num">09</span><span class="t">Knižnica nadpisov</span></a>
+        <a href="#hooks"><span class="num">10</span><span class="t">Story hooks</span></a>
+        <a href="#vs"><span class="num">11</span><span class="t">Vs konkurencia</span></a>
+        <a href="#namietky"><span class="num">12</span><span class="t">Námietky</span></a>
+        <a href="#copy"><span class="num">13</span><span class="t">Social šablóny</span></a>
+        <a href="#kalendar"><span class="num">14</span><span class="t">Sezónny kalendár</span></a>
+        <a href="#donts"><span class="num">15</span><span class="t">Marketing Don'ts</span></a>
+        <a href="#body"><span class="num">16</span><span class="t">Kontaktné body</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 00 ESENCIA -->
+<section class="sec band" id="uvod">
+  <div class="wrap">
+    <div class="eyebrow">00 — Esencia</div>
+    <h2>Jadro značky</h2>
+    <p class="lead">CarBox zbavuje ľudí stresu z auta. Jedna adresa, moderné vybavenie, rodinný prístup a férová cena, ktorú poznáte dopredu.</p>
+    <h3>Big idea — jedna veta, ktorá drží všetko pokope</h3>
+    <p class="big">Auto v poriadku,<br>bez prekvapení.</p>
+    <h3 style="margin-top:26px">Poslanie</h3>
+    <p>Postarať sa o auto komplet — od pneumatík po lakovňu — odborne, načas a transparentne. Aby zákazník odchádzal s istotou, že je to spravené dobre a že vie, za čo zaplatil.</p>
+    <p>CarBox vznikol v roku 2025 — no stojí za ním viac než <strong>10 rokov skúseností</strong> v odbore.</p>
+  </div>
+</section>
+
+<!-- 01 POZICIA -->
+<section class="sec" id="pozicia">
+  <div class="wrap">
+    <div class="eyebrow">01 — Pozícia značky</div>
+    <h2>Kde stojíme na trhu</h2>
+    <p class="note">Pozičná veta je interný kompas — nehádže sa na web doslova, ale každý text z nej vychádza.</p>
+    <p>Pre vodičov v Čani a okolí Košíc, ktorí chcú mať auto v poriadku <strong>bez stresu a bez prefúknutých cien</strong>, je CarBox moderný rodinný servis, kde dostanú všetko na jednom mieste — od prezutia cez geometriu až po lakovňu — s férovým, vopred jasným odhadom ceny. Na rozdiel od značkových servisov je dostupnejší a osobnejší; na rozdiel od malej garáže má moderné vybavenie a širší záber služieb.</p>
+    <h3 style="margin:26px 0 14px">Voči komu sa vymedzujeme</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Súper</th><th>Čo ponúka</th><th>Ako sa líšime</th></tr></thead>
+      <tbody>
+        <tr><td>Značkový servis</td><td>Dôvera ku značke, ale drahšie a neosobné</td><td>Dostupnejšie, osobný prístup, servis všetkých značiek</td></tr>
+        <tr><td>Malá garáž / „u známeho"</td><td>Lacné, ale obmedzené vybavenie a nejasná kvalita</td><td>Moderné vybavenie, 3D geometria, transparentná cena</td></tr>
+        <tr><td>Rýchloservis / pneucentrum</td><td>Rýchle, ale úzko zamerané na jednu vec</td><td>Všetko pod jednou strechou — netreba voziť auto na tri miesta</td></tr>
+      </tbody>
+    </table></div>
+    <p style="margin-top:18px"><strong>Cenová logika:</strong> férový stred — nie najlacnejší, nie najdrahší. Nikdy nepredávajte cez <em>„najlacnejšie"</em>, vždy cez <em>„budete to mať v poriadku a budete vedieť, za čo platíte."</em> Cenu alebo odhad dávajte zákazníkovi vždy dopredu.</p>
+  </div>
+</section>
+
+<!-- 02 PERSONA -->
+<section class="sec" id="persona">
+  <div class="wrap">
+    <div class="eyebrow">02 — Zákazník</div>
+    <h2>Pre koho to robíme</h2>
+    <p class="note">Návrh postavený na pozícii a vašich službách — upravte podľa toho, koho reálne vidíte v objednávkach.</p>
+    <div class="grid g2">
+      <div class="card">
+        <span class="pn">Hlavná persona</span>
+        <h3>Praktický vodič / rodina</h3>
+        <p><strong>30–55 rokov</strong>, Čaňa a okolie, dochádzka do Košíc. Auto používa denne a potrebuje sa naň spoľahnúť. Chce pokoj, férovosť a aby mu niekto zrozumiteľne vysvetlil, čo a prečo treba. Neznáša strašenie a prekvapenia na faktúre. Online rezervácia mu vyhovuje.</p>
+      </div>
+      <div class="card">
+        <span class="pn">Vedľajšia persona</span>
+        <h3>Živnostník / malá firma</h3>
+        <p>Auto alebo dodávka je pracovný nástroj — každý deň mimo prevádzky stojí peniaze. Kľúčové sú <strong>rýchlosť, dostupný termín a spoľahlivosť</strong>. Ocení, keď ho neodstavíte na týždeň a dáte jasné slovo.</p>
+      </div>
+    </div>
+    <p style="margin-top:18px"><strong>Praktický dôsledok:</strong> väčšina komunikácie a peňazí ide na hlavnú personu. Živnostníkov oslovujte cez rýchlosť a dostupnosť termínu.</p>
+  </div>
+</section>
+
+<!-- 03 FARBY -->
+<section class="sec" id="farby">
+  <div class="wrap">
+    <div class="eyebrow">03 — Farby</div>
+    <h2>Farebná paleta</h2>
+    <p class="note">Logo zostáva pôvodné. Paleta vychádza priamo z neho — petrolejová a červená sú odčítané z vášho súboru loga. Červenú držte ako akcent, nie ako výplň.</p>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#0C4A5A"></div><div class="meta"><div class="name">Petrolejová</div><div class="hex">#0C4A5A</div><div class="use">Primárna — plochy, nadpisy, linky</div></div></div>
+      <div class="sw"><div class="chip" style="background:#C0382B"></div><div class="meta"><div class="name">Červená</div><div class="hex">#C0382B</div><div class="use">Akcent, CTA, dôraz — striedmo</div></div></div>
+      <div class="sw"><div class="chip" style="background:#17150F"></div><div class="meta"><div class="name">Atrament</div><div class="hex">#17150F</div><div class="use">Text, tmavé plochy</div></div></div>
+      <div class="sw"><div class="chip" style="background:#5F6B6F"></div><div class="meta"><div class="name">Oceľová</div><div class="hex">#5F6B6F</div><div class="use">Popisky, utility, čiary</div></div></div>
+      <div class="sw"><div class="chip" style="background:#ECEAE3"></div><div class="meta"><div class="name">Svetlá</div><div class="hex">#ECEAE3</div><div class="use">Pozadia, vzdušnosť</div></div></div>
+    </div>
+    <p class="note" style="margin-top:26px">Červená aj petrolejová sú tmavé — <strong>nedávajte červený text na petrolejovú</strong> (zlejú sa). Červenú používajte ako plné plochy/akcenty so svetlým textom, alebo na svetlom pozadí. Na malý červený text na svetlom použite tmavšiu <span style="font-family:var(--mono);font-size:.85em">#8E2A20</span>.</p>
+  </div>
+</section>
+
+<!-- 04 TYPOGRAFIA -->
+<section class="sec" id="typografia">
+  <div class="wrap">
+    <div class="eyebrow">04 — Typografia</div>
+    <h2>Písmo</h2>
+    <p class="note">Logo má vlastné (pôvodné) písmo — to nemeníme. Toto je návrh písma pre komunikáciu: web, dokumenty, posty, faktúry.</p>
+    <div class="spec"><div class="role">Display · Barlow Condensed</div><div class="demoD">Auto v poriadku, bez prekvapení</div></div>
+    <div class="spec"><div class="role">Text · Inter</div><div class="demoT">Po diagnostike vám ukážeme, čo sme našli, a cenu odsúhlasíte ešte predtým, než začneme. Žiadne prekvapenia na faktúre.</div></div>
+    <div class="spec"><div class="role">Štítky &amp; čísla · JetBrains Mono</div><div class="demoM">130 € · Po–Pi 8:00–15:00 · +421 905 154 247</div></div>
+    <p>Nadpisy a silné vety: <strong>Barlow Condensed</strong> (technický, sebavedomý). Bežný text, popisy, tlačidlá: <strong>Inter</strong>. Štítky, ceny, údaje a sekcie: <strong>JetBrains Mono</strong>. Tento kontrast dáva komunikácii „dielenský", technický a poctivý pocit.</p>
+  </div>
+</section>
+
+<!-- 05 VOICE -->
+<section class="sec band" id="voice">
+  <div class="wrap">
+    <div class="eyebrow">05 — Voice &amp; tone</div>
+    <h2>Ako CarBox hovorí</h2>
+    <p class="lead">Odborný, ale zrozumiteľný. Pokojný a istý — žiadny tlak, žiadne strašenie. Férový a transparentný. Ľudský a rodinný — ako dobrý mechanik, ktorý vám vysvetlí, čo treba, bez balastu.</p>
+    <h3 style="margin-top:8px">Princípy písania</h3>
+    <p>Preložte odborný problém do ľudskej reči. Cenu alebo odhad povedzte dopredu. Nikdy nestrašte zbytočnou opravou. Dôraz na bezpečnosť a istotu. Konkrétne pred abstraktným.</p>
+    <div class="dodont" style="margin-top:20px">
+      <div class="dd yes"><span class="tag">Takto áno</span><p>„Brzdové platničky vydržia ešte zhruba 5 000 km. Pri najbližšej návšteve ich vymeníme — cenu poviem vopred."</p></div>
+      <div class="dd no"><span class="tag">Takto nie</span><p>„Treba hneď meniť brzdy, je to nebezpečné!!!"</p></div>
+      <div class="dd yes"><span class="tag">Takto áno</span><p>„Geometriu nastavíme presne — auto pôjde rovno a pneumatiky sa nezničia predčasne."</p></div>
+      <div class="dd no"><span class="tag">Takto nie</span><p>„Kvalitná geometria za super cenu."</p></div>
+      <div class="dd yes"><span class="tag">Takto áno</span><p>„Po diagnostike vám ukážeme, čo sme našli, a ceny dopredu odsúhlasíte."</p></div>
+      <div class="dd no"><span class="tag">Takto nie</span><p>„Opravíme, čo bude treba."</p></div>
+    </div>
+    <p style="margin-top:22px"><strong>Vykanie:</strong> teplé vykanie všade — web, e-mail, telefón aj v servise. Konzistentne. Výnimka: na neformálnom videu na sociálnych sieťach je tykanie OK. Pravidlo č. 1 — <strong>nemiešať to v rámci jedného kanála.</strong></p>
+    <p><strong>Zakázané frázy:</strong> „super cena", „AKCIA!!!", CAPS LOCK na celé vety, série výkričníkov, strašenie a vágne „kvalitne a rýchlo".</p>
+  </div>
+</section>
+
+<!-- 06 CLAIM -->
+<section class="sec" id="claim">
+  <div class="wrap">
+    <div class="eyebrow">06 — Claim</div>
+    <h2>Hlavná veta značky</h2>
+    <p class="note">Návrh master claimu. Vyberte jeden a držte ho — neprepisujte ho v každom poste. Podporné mikro-claimy môžete striedať.</p>
+    <div class="claimbox">
+      <div class="m">Auto v poriadku,<br><span>bez prekvapení.</span></div>
+      <div class="micro">
+        <span>Všetko pre vaše auto pod jednou strechou.</span>
+        <span>Férovo a načas.</span>
+        <span>Moderný servis, rodinný prístup.</span>
+        <span>Cenu poznáte dopredu.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 PILIERE -->
+<section class="sec" id="piliere">
+  <div class="wrap">
+    <div class="eyebrow">07 — Emočné piliere</div>
+    <h2>5 pilierov, na ktoré tlačíme</h2>
+    <p class="note">Ľudia nekupujú opravu — kupujú pokoj a istotu. Každý post by mal sadnúť aspoň na jeden z týchto piatich.</p>
+    <div class="grid g3 pill">
+      <div class="card"><span class="pn">01</span><h3>Istota &amp; bezpečnosť</h3><p>Auto, ktorému veríte na cestách. Spravené tak, aby ste sa oň nemuseli báť.</p></div>
+      <div class="card"><span class="pn">02</span><h3>Férovosť</h3><p>Cenu poznáte dopredu. Žiadne prekvapenia, žiadne „dorobili sme aj…".</p></div>
+      <div class="card"><span class="pn">03</span><h3>Všetko pod strechou</h3><p>Od pneu po lakovňu na jednom mieste. Jedna návšteva namiesto troch.</p></div>
+      <div class="card"><span class="pn">04</span><h3>Čas &amp; pohodlie</h3><p>Online rezervácia, krátke čakanie, termín, ktorý sadne vám.</p></div>
+      <div class="card"><span class="pn">05</span><h3>Odbornosť</h3><p>Moderné technológie — 3D geometria, presná diagnostika. Nie odhad.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DOVODY -->
+<section class="sec" id="dovody">
+  <div class="wrap">
+    <div class="eyebrow">08 — Dôvody zvoliť nás</div>
+    <h2>8 dôvodov, prečo práve CarBox</h2>
+    <p class="note">Toto sú vaše predajné argumenty. Recyklujte ich do postov, reklám aj e-mailov.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Dôvod</th><th>Ako ho povedať</th></tr></thead>
+      <tbody>
+        <tr><td>Všetko pod strechou</td><td>„Pneu, servis, geometria aj lak — nemusíte voziť auto na tri miesta."</td></tr>
+        <tr><td>Férová cena dopredu</td><td>„Cenu odsúhlasíte pred opravou. Žiadne prekvapenia na faktúre."</td></tr>
+        <tr><td>Moderné vybavenie</td><td>„3D geometria a diagnostika — presné nastavenie, nie odhad."</td></tr>
+        <tr><td>Krátke čakacie doby</td><td>„Rezervujte online termín, ktorý sadne vám."</td></tr>
+        <tr><td>Rodinný prístup</td><td>„Nie ste číslo. Vysvetlíme a poradíme."</td></tr>
+        <tr><td>Profesionálna lakovňa</td><td>„Škrabanec aj lak — auto odíde ako z autosalónu."</td></tr>
+        <tr><td>Servis všetkých značiek</td><td>„Postaráme sa o vaše auto bez ohľadu na značku."</td></tr>
+        <tr><td>Odvoz aj výjazd</td><td>„Pokazí sa vám auto? Zabezpečíme odvoz — a keď ho nezpojazdníte, vieme prísť za vami."</td></tr>
+      </tbody>
+    </table></div>
+    <p style="margin-top:18px"><strong>Chýbajúci pilier = sociálny dôkaz.</strong> Pre lokálny servis sú <strong>Google recenzie</strong> rozhodujúce — pre dôveru aj pre pozíciu vo vyhľadávaní. Systematický zber recenzií je preto vaša marketingová úloha č. 1 (rieši to kalendár aj sekcia 16).</p>
+  </div>
+</section>
+
+<!-- 09 NADPISY -->
+<section class="sec" id="nadpisy">
+  <div class="wrap">
+    <div class="eyebrow">09 — Knižnica nadpisov</div>
+    <h2>Schválené nadpisy &amp; hooky</h2>
+    <p class="note">Hotové vety na posty, reklamy a predmety e-mailov. Vyberte, doplňte službu, použite. Všetky sedia do brand voice.</p>
+    <div class="heads">
+      <div class="row"><div class="cat">Istota / bezpečnosť</div><div class="items"><span>Auto v poriadku, vy v pohode.</span><span>Sadnite a verte, že je to spravené.</span><span>Pred cestou? Skontrolujeme to.</span></div></div>
+      <div class="row"><div class="cat">Férová cena</div><div class="items"><span>Cenu poznáte skôr, než začneme.</span><span>Žiadne prekvapenia na faktúre.</span><span>Platíte za to, čo naozaj treba.</span></div></div>
+      <div class="row"><div class="cat">Všetko pod strechou</div><div class="items"><span>Pneu, servis aj lak. Jedna adresa.</span><span>Nevozte auto na tri miesta.</span></div></div>
+      <div class="row"><div class="cat">Rýchlosť / rezervácia</div><div class="items"><span>Rezervujte online, príďte, hotovo.</span><span>Termín, ktorý sadne vám.</span><span>Bez čakania v rade.</span></div></div>
+      <div class="row"><div class="cat">Sezónne (pneu / zima)</div><div class="items"><span>Čas prezuť. Rezervujte skôr, než príde rad.</span><span>Zima klope. Pneuservis bez čakania.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 HOOKS -->
+<section class="sec" id="hooks">
+  <div class="wrap">
+    <div class="eyebrow">10 — Story hooks</div>
+    <h2>Príbehové uhly pre obsah</h2>
+    <p class="note">Keď neviete, čo postnúť — vyberte jeden uhol a rozviňte ho. Fungujú aj keď nie sú priamo „o predaji".</p>
+    <div class="grid g3">
+      <div class="card"><h3>Za oponou v dielni</h3><p>Čistota, vybavenie, „deň v CarBoxe". Ľudská tvár servisu — vy už fotky dielne máte.</p></div>
+      <div class="card"><h3>Ako to funguje</h3><p>Čo je 3D geometria a prečo na nej záleží. Edukácia, ktorá zároveň predáva.</p></div>
+      <div class="card"><h3>Pred &amp; po</h3><p>Lakovňa a geometria sú vizuálne vďačné. Škrabanec → ako nový.</p></div>
+      <div class="card"><h3>Zákaznícky príbeh</h3><p>Recenzia, foto, „ako sme pomohli". Najsilnejší dôkaz pre lokálny servis.</p></div>
+      <div class="card"><h3>Sezónny tip</h3><p>Kedy prezuť, ako spoznať opotrebené brzdy. Napojte na váš blog „Rady a Tipy".</p></div>
+      <div class="card"><h3>Tím / rodina</h3><p>Kto sa o auto stará. Rodinná firma = tvár a dôvera.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 VS -->
+<section class="sec" id="vs">
+  <div class="wrap">
+    <div class="eyebrow">11 — Vs konkurencia</div>
+    <h2>CarBox vs. ostatní</h2>
+    <p class="note">Toto nehovorte priamo a útočne — premietnite do tónu a argumentov.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>&nbsp;</th><th>Inde</th><th>CarBox</th></tr></thead>
+      <tbody>
+        <tr><td>Záber služieb</td><td>Jedna vec — len pneu, len servis</td><td>Všetko pod jednou strechou</td></tr>
+        <tr><td>Vybavenie</td><td>Garáž: čo sa zmestí</td><td>3D geometria, diagnostika, lakovňa</td></tr>
+        <tr><td>Cena</td><td>Často nejasná, „uvidíme na konci"</td><td>Odhad a odsúhlasenie dopredu</td></tr>
+        <tr><td>Prístup</td><td>Ste číslo v poradí</td><td>Osobný, rodinný, vysvetlíme</td></tr>
+        <tr><td>Rezervácia</td><td>Telefonát, čakanie</td><td>Online 24/7</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- 12 NAMIETKY -->
+<section class="sec" id="namietky">
+  <div class="wrap">
+    <div class="eyebrow">12 — Námietky &amp; odpovede</div>
+    <h2>Čo zákazníka brzdí — a čo na to</h2>
+    <p class="note">Predajné zlato. Každú námietku premeňte na post, FAQ alebo vetu v reklame.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Čo si myslí</th><th>Ako odpovedáme</th></tr></thead>
+      <tbody>
+        <tr><td>„Nafúknu mi to / bude to drahé."</td><td>Vopred odsúhlasená cena, transparentný odhad, ukážeme čo a prečo. Platíte len za to, čo treba.</td></tr>
+        <tr><td>„Nepoznám vás, dôverujem?"</td><td>Rodinná firma, viac než 10 rokov skúseností v odbore, foto dielne, Google recenzie.</td></tr>
+        <tr><td>„Nemám čas, trvá to dlho."</td><td>Online rezervácia, krátke čakanie, všetko na jednom mieste — jedna návšteva.</td></tr>
+        <tr><td>„Spravia mi to dobre?"</td><td>Moderné vybavenie, 3D geometria, záruka na prácu individuálne podľa druhu práce.</td></tr>
+        <tr><td>„Je to ďaleko (Čaňa)?"</td><td>Kúsok od Košíc, parkovanie nie je problém. Zabezpečíme aj odvoz — a keď auto nezpojazdníte, vieme prísť za vami.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- 13 COPY -->
+<section class="sec" id="copy">
+  <div class="wrap">
+    <div class="eyebrow">13 — Social šablóny</div>
+    <h2>Hotové šablóny na posty a e-maily</h2>
+    <p class="note">Doplňte <span class="fill">[zvýraznené]</span> miesta. Tón už sedí — netreba prepisovať.</p>
+
+    <div class="tpl">
+      <div class="h"><span class="name">Servisný post (FB / IG)</span><span class="badge">Predaj</span></div>
+      <pre>[Služba — napr. Prezutie a vyváženie]
+Spravíme to, kým si dáte kávu.
+
+Cenu poviete vopred, termín si vyberiete online.
+Pneu, servis aj geometria — všetko u nás.
+
+→ Rezervujte: carbox.top</pre>
+      <p class="tip">Vždy aspoň jeden emočný pilier + jeden dôvod (cena dopredu / všetko pod strechou / rýchlo).</p>
+    </div>
+
+    <div class="tpl">
+      <div class="h"><span class="name">Sezónny pneu post</span><span class="badge">Urgencia</span></div>
+      <pre>Čas prezuť na [zimné / letné].
+Termíny sa cez sezónu plnia rýchlo — rezervujte skôr, než príde rad.
+
+→ Online termín: carbox.top</pre>
+      <p class="tip">Urgenciu používajte len keď je pravdivá. Falošná „posledné termíny" zničí dôveru.</p>
+    </div>
+
+    <div class="tpl">
+      <div class="h"><span class="name">Pred &amp; po (lakovňa / geometria)</span><span class="badge">Dôkaz</span></div>
+      <pre>[Foto pred] → [Foto po]
+
+[Čo sme robili — napr. lakovanie nárazníka].
+Nie je nič poznať. Presne tak to má byť.
+
+→ carbox.top</pre>
+      <p class="tip">Vizuálny dôkaz predáva sám. Pri súhlase zákazníka pridajte jeho auto.</p>
+    </div>
+
+    <div class="tpl">
+      <div class="h"><span class="name">Edukačný tip</span><span class="badge">Dosah</span></div>
+      <pre>3 znaky, že vaše brzdy treba skontrolovať:
+1) [znak] 2) [znak] 3) [znak]
+
+Ak niečo z toho poznáte, ozvite sa — pozrieme to.</pre>
+      <p class="tip">Buduje dôveru a odbornosť. Napojte na blog „Rady a Tipy".</p>
+    </div>
+
+    <div class="tpl">
+      <div class="h"><span class="name">Repost Google recenzie</span><span class="badge">Dôkaz</span></div>
+      <pre>„[citát zákazníka]" — [meno]
+
+Ďakujeme. Presne pre tieto momenty to robíme.
+
+→ carbox.top</pre>
+      <p class="tip">Najsilnejší obsah pre lokálny servis. Recenzie si pýtajte aktívne (viď sekcia 16).</p>
+    </div>
+
+    <div class="tpl">
+      <div class="h"><span class="name">Po-servisná SMS / e-mail</span><span class="badge">Retencia</span></div>
+      <pre>Dobrý deň, [meno], vaše auto je hotové a v poriadku.
+Ďakujeme za dôveru.
+
+Ak ste boli spokojní, pomôže nám krátka Google recenzia: [odkaz]
+Ozveme sa pred ďalším servisom / prezutím.</pre>
+      <p class="tip">Toto rieši vašu č. 1 brzdu — chýbajúce recenzie. Posielajte po každom servise.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 14 KALENDAR -->
+<section class="sec" id="kalendar">
+  <div class="wrap">
+    <div class="eyebrow">14 — Sezónny kalendár</div>
+    <h2>Čo komunikovať a kedy</h2>
+    <p class="note">Rámec pre slovenský trh. Stála linka cez celý rok: zber Google recenzií po každom servise.</p>
+    <div class="seasons">
+      <div class="season"><div class="s">Jar</div><div class="when">Mar–Máj</div><p>Prezutie na letné, pozimná kontrola (brzdy, podvozok, klíma), geometria po výtlkoch. „Daj auto do poriadku po zime."</p></div>
+      <div class="season"><div class="s">Leto</div><div class="when">Jún–Aug</div><p>Servis a plnenie klimatizácie, kontrola pred dovolenkou, geometria. „Pred cestou to skontrolujeme."</p></div>
+      <div class="season"><div class="s">Jeseň</div><div class="when">Sep–Nov</div><p>Hlavná pneu sezóna — prezutie na zimné. Zimná príprava: batéria, brzdy, svetlá. „Rezervujte skôr, než príde rad."</p></div>
+      <div class="season"><div class="s">Zima</div><div class="when">Dec–Feb</div><p>Zimná údržba, kontrola batérie a svetiel, ochrana laku proti soli. Aktuálne akcie nájdete na našich sieťach a webe.</p></div>
+    </div>
+    <p style="margin-top:18px"><strong>Stála priorita celý rok:</strong> po každej zákazke poproste o Google recenziu a podporujte zdieľanie fotiek pred/po. Toto rieši vašu najväčšiu brzdu — chýbajúci sociálny dôkaz.</p>
+  </div>
+</section>
+
+<!-- 15 DONTS -->
+<section class="sec band" id="donts">
+  <div class="wrap">
+    <div class="eyebrow">15 — Marketing Don'ts</div>
+    <h2>Čo nikdy nerobiť</h2>
+    <div class="grid g3">
+      <div class="card"><h3>Nestrašiť</h3><p>Žiadne „je to nebezpečné!!!" pri každej oprave. Strašenie ničí dôveru rýchlejšie, než ju vybudujete.</p></div>
+      <div class="card"><h3>Žiadny CAPS a výkričníky</h3><p>„AKCIA!!!" patrí k lacným reťazcom, nie k CarBoxu.</p></div>
+      <div class="card"><h3>Žiadna falošná urgencia</h3><p>„Posledné termíny" len keď je to pravda.</p></div>
+      <div class="card"><h3>Nezľavovať stále</h3><p>Z férovej ceny nerobte večnú zľavu. Zľava je výnimka, nie identita.</p></div>
+      <div class="card"><h3>Nemiešať tón</h3><p>Vyberte vykanie/tykanie podľa kanála a držte ho. Konzistencia = dôvera.</p></div>
+      <div class="card"><h3>Nezanedbávať dôkaz</h3><p>Bez Google recenzií a fotiek lokálny predaj viazne. Zbierajte ich systematicky.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 16 BODY -->
+<section class="sec" id="body">
+  <div class="wrap">
+    <div class="eyebrow">16 — Kontaktné body</div>
+    <h2>Zážitok = predaj navyše</h2>
+    <p class="note">Pre servis nie je „unboxing" balíček, ale odovzdanie auta a pár drobností okolo. Sú to najlacnejšie spôsoby, ako získať recenzie a vrátiť zákazníka.</p>
+    <div class="grid g2">
+      <div class="card"><h3>Odovzdanie auta</h3><p>Auto čisté, krátke zrozumiteľné zhrnutie „čo sme robili a prečo". Pocit poctivosti, ktorý si zákazník zapamätá.</p></div>
+      <div class="card"><h3>Kartička do auta</h3><p>Malá kartička na kľúče alebo na zrkadlo: poďakovanie + <strong>QR kód na Google recenziu</strong> + dátum ďalšieho servisu/prezutia.</p></div>
+      <div class="card"><h3>Po-servisná SMS</h3><p>Poďakovanie, odkaz na recenziu, pripomienka pred ďalšou sezónou. (Šablóna v sekcii 13.)</p></div>
+      <div class="card"><h3>Visačka „ďalší servis"</h3><p>Na zrkadlo s dátumom a km. Praktické pre zákazníka, návrat pre vás.</p></div>
+    </div>
+    <p style="margin-top:22px">Toto je zároveň zárodok tlačovín. Keď budete chcieť, dorobím tlačové podklady v tomto vizuále: <strong>kartička s QR na recenzie, FB cover, vizitka, A5 leták.</strong></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="bw">Car<span>Box</span></div>
+      <div class="meta" style="margin-top:8px">Autoservis a pneuservis · Čaňa</div>
+    </div>
+    <div class="meta">
+      <a href="https://carbox.top">www.carbox.top</a><br>
+      +421 905 154 247<br>
+      Železničná 173/2, 044 14 Čaňa<br>
+      Brand &amp; Marketing Playbook · v1.0 · Jún 2026<br>
+      Tlač / PDF: Ctrl/Cmd + P
+    </div>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var p=document.getElementById('progress');
+  function onScroll(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    p.style.width=(max>0?(h.scrollTop/max)*100:0)+'%';
+  }
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:0.08});
+    document.querySelectorAll('.sec').forEach(function(s){io.observe(s);});
+  } else {
+    document.querySelectorAll('.sec').forEach(function(s){s.classList.add('in');});
+  }
+})();
+</script>
+</body>
+</html>
